@@ -158,7 +158,7 @@ export default function CheckoutPage() {
     return (
       <section className="min-h-screen bg-[radial-gradient(circle_at_50%_20%,rgba(201,54,232,.2),transparent_35%),#050505] px-4 pb-24 pt-28 sm:px-5 sm:pt-32">
         <PaymentConfetti />
-        <div className="mx-auto w-full max-w-2xl rounded-[1.5rem] border-2 border-brand/50 bg-[#0b0b0b] p-5 text-center shadow-2xl shadow-brand/10 sm:rounded-[2rem] sm:p-10 md:p-12">
+        <div className="mx-auto w-full max-w-2xl rounded-[1.5rem] border-[3px] border-zinc-500 bg-zinc-900 p-5 text-center shadow-2xl shadow-brand/10 sm:rounded-[2rem] sm:p-10 md:p-12">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="Crow Fitness Club" className="mx-auto mb-6 size-14 object-contain sm:mb-8 sm:size-16" />
           <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-brand text-white sm:size-20">
@@ -188,7 +188,7 @@ export default function CheckoutPage() {
             <DigitalPassCard pass={pass} />
           </div>
 
-          <div className="mt-6 rounded-2xl border-2 border-white/25 bg-black p-4 text-left text-sm sm:p-5">
+          <div className="mt-6 rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 p-4 text-left text-sm sm:p-5">
             <div className="flex justify-between gap-3">
               <span className="text-zinc-500">Folio</span>
               <span className="break-all font-mono text-right text-white">{orderId}</span>
@@ -205,7 +205,7 @@ export default function CheckoutPage() {
             </div>
           </div>
 
-          <div className="mt-5 rounded-2xl border-2 border-white/25 bg-[#111] p-4 text-left sm:p-5" aria-live="polite">
+          <div className="mt-5 rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 p-4 text-left sm:p-5" aria-live="polite">
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-brand">
               Envío de tarjeta digital
             </p>
@@ -260,7 +260,7 @@ export default function CheckoutPage() {
         </Link>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-start">
-          <form onSubmit={submitPayment} autoComplete="off" className="rounded-[2rem] border-2 border-white/30 bg-[#141414] p-7 sm:p-10">
+          <form onSubmit={submitPayment} autoComplete="off" className="rounded-[2rem] border-[3px] border-zinc-500 bg-[#141414] p-7 sm:p-10">
             <div className="flex items-center justify-between border-b border-white/10 pb-7">
               <div>
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
@@ -275,7 +275,7 @@ export default function CheckoutPage() {
               </span>
             </div>
 
-            <div className="mt-7 grid grid-cols-2 gap-2 rounded-2xl border-2 border-white/25 bg-black/40 p-1.5">
+            <div className="mt-7 grid grid-cols-2 gap-2 rounded-2xl border-[3px] border-zinc-500 bg-black/40 p-1.5">
               <button
                 type="button"
                 onClick={() => setPayerType('nuevo')}
@@ -335,10 +335,10 @@ export default function CheckoutPage() {
                     key={item.id}
                     type="button"
                     onClick={() => setPlanId(item.id)}
-                    className={`rounded-2xl border px-4 py-4 text-left transition ${
+                    className={`rounded-2xl border-[3px] px-4 py-4 text-left transition ${
                       planId === item.id
                         ? 'border-brand bg-brand/15'
-                        : 'border-white/15 bg-zinc-900 hover:border-white/30'
+                        : 'border-zinc-500 bg-zinc-900 hover:border-zinc-400'
                     }`}
                   >
                     <p className="text-xs font-bold uppercase text-white">{item.title}</p>
@@ -352,7 +352,7 @@ export default function CheckoutPage() {
 
             <fieldset className="mt-10 border-t border-white/10 pt-8">
               <legend className="mb-5 text-sm font-bold text-white">3. Tarjeta de crédito o débito</legend>
-              <div className="rounded-2xl border-2 border-white/30 bg-[#151515] p-5">
+              <div className="rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 p-5">
                 <label className="block">
                   <span className="mb-2 flex items-center justify-between text-xs font-semibold text-zinc-300">
                     Número de tarjeta
@@ -433,7 +433,7 @@ export default function CheckoutPage() {
             </p>
           </form>
 
-          <aside className="rounded-[2rem] border-2 border-brand/50 bg-[#141414] p-7 sm:p-9 lg:sticky lg:top-28">
+          <aside className="rounded-[2rem] border-[3px] border-zinc-500 bg-[#141414] p-7 sm:p-9 lg:sticky lg:top-28">
             <div className="flex items-center justify-between">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
                 Resumen de compra
@@ -500,7 +500,7 @@ function NotificationRow({
   const sent = status === 'sent';
 
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-black/60 p-3.5">
+    <div className="flex items-center gap-3 rounded-xl border-[3px] border-zinc-500 bg-zinc-900 p-3.5">
       <span
         className={`flex size-10 shrink-0 items-center justify-center rounded-full ${
           sent ? 'bg-emerald-500/15 text-emerald-400' : 'bg-brand/15 text-brand'

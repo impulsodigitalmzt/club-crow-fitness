@@ -61,7 +61,7 @@ const themeStyles: Record<
 > = {
   admin: {
     panel: 'bg-[var(--admin-panel)] text-white',
-    border: 'border-white/10',
+    border: 'border-zinc-500',
     muted: 'text-zinc-400',
     accent: 'text-[var(--admin-brand-light)]',
     accentSoft: 'bg-[var(--admin-brand)]/15 text-[var(--admin-brand-light)]',
@@ -71,7 +71,7 @@ const themeStyles: Record<
   },
   portal: {
     panel: 'bg-[var(--portal-card)] text-[var(--portal-text)]',
-    border: 'border-[var(--portal-border)]',
+    border: 'border-zinc-500',
     muted: 'text-[var(--portal-muted)]',
     accent: 'text-[var(--portal-brand-light)]',
     accentSoft: 'bg-[var(--portal-brand)]/15 text-[var(--portal-brand-light)]',
@@ -162,7 +162,7 @@ export function HelpDrawer({
               {content.steps.map((step, index) => (
                 <li
                   key={step.id}
-                  className={`rounded-2xl border px-4 py-4 ${styles.border} bg-black/25`}
+                  className={`rounded-2xl border-[3px] px-4 py-4 ${styles.border} bg-black/25`}
                 >
                   <div className="mb-2 flex items-center gap-3">
                     <span
@@ -187,7 +187,7 @@ export function HelpDrawer({
                 {content.faqHeading}
               </h3>
             </div>
-            <div className={`overflow-hidden rounded-2xl border ${styles.border}`}>
+            <div className={`overflow-hidden rounded-2xl border-[3px] ${styles.border}`}>
               {content.faqs.map((faq, i) => {
                 const isOpen = openFaq === faq.id;
                 return (

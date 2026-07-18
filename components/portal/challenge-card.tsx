@@ -24,8 +24,8 @@ export function ChallengeCard({
   return (
     <article
       id={`reto-${challenge.id}`}
-      className={`overflow-hidden rounded-[1.5rem] border-2 bg-[var(--portal-card)] ${
-        highlight ? 'border-[var(--portal-brand)]' : 'border-white/25'
+      className={`overflow-hidden rounded-[1.5rem] border-[3px] bg-[var(--portal-card)] ${
+        highlight ? 'border-brand' : 'border-zinc-500'
       }`}
     >
       <div className="relative h-36">

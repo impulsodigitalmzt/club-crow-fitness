@@ -65,7 +65,7 @@ function MemberLoginForm() {
     <div className="portal-app flex min-h-dvh items-center justify-center px-5 py-10">
       <form
         onSubmit={onSubmit}
-        className="w-full max-w-md rounded-[1.75rem] border-2 border-white/25 bg-[var(--portal-card)] p-7"
+        className="w-full max-w-md rounded-[1.75rem] border-[3px] border-zinc-500 bg-[var(--portal-card)] p-7"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.png" alt="Crow" className="mx-auto size-14 object-contain" />

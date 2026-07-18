@@ -82,7 +82,7 @@ export default function ClassesPage() {
               { src: '/fotos/coach-sofia.jpg', name: 'Coach Sofía', role: 'HIIT · Funcional' },
               { src: '/fotos/coach-arturo.jpg', name: 'Coach Arturo', role: 'Boxeo · Acondicionamiento' },
             ].map((coach) => (
-              <figure key={coach.name} className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/25">
+              <figure key={coach.name} className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-[3px] border-zinc-500">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={coach.src} alt={coach.name} className="absolute inset-0 size-full object-cover transition duration-700 group-hover:scale-105" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
@@ -127,8 +127,10 @@ export default function ClassesPage() {
                     setSelectedClass(item);
                     setSuccess(false);
                   }}
-                  className={`grid w-full gap-4 rounded-2xl border p-6 text-left transition-colors sm:grid-cols-[100px_1fr_auto] sm:items-center ${
-                    selectedClass?.name === item.name ? 'border-brand bg-brand/10' : 'border-white/20 bg-[#141414] hover:border-white/40'
+                  className={`grid w-full gap-4 rounded-2xl border-[3px] p-6 text-left transition-colors sm:grid-cols-[100px_1fr_auto] sm:items-center ${
+                    selectedClass?.name === item.name
+                      ? 'border-brand bg-brand/10'
+                      : 'border-zinc-500 bg-zinc-900 hover:border-zinc-400'
                   }`}
                 >
                   <span className="font-mono text-xl font-bold text-brand">{item.time}</span>
@@ -141,7 +143,7 @@ export default function ClassesPage() {
               ))}
             </div>
 
-            <aside className="h-fit rounded-3xl border-2 border-brand/50 bg-[#141414] p-7 lg:sticky lg:top-28">
+            <aside className="h-fit rounded-3xl border-[3px] border-zinc-500 bg-[#141414] p-7 lg:sticky lg:top-28">
               <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Reserva tu lugar</p>
               <h2 className="mt-3 font-display text-2xl font-black uppercase text-white">
                 {selectedClass ? selectedClass.name : 'Selecciona una clase'}

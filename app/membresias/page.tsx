@@ -22,7 +22,7 @@ export default function MembershipsPage() {
 
       <section id="planes" className="bg-black py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-          <div className="mb-10 flex items-start gap-4 rounded-2xl border border-brand/40 bg-gradient-to-r from-brand/20 via-brand/10 to-transparent px-5 py-4 sm:px-6">
+          <div className="mb-10 flex items-start gap-4 rounded-2xl border-[3px] border-zinc-500 bg-gradient-to-r from-brand/20 via-brand/10 to-transparent px-5 py-4 sm:px-6">
             <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-brand text-white">
               <CreditCard className="size-5" />
             </span>
@@ -46,7 +46,7 @@ export default function MembershipsPage() {
             <MembershipCards />
           </div>
 
-          <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-white/30 bg-[#111] px-6 py-5 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 px-6 py-5 sm:flex-row">
             <div>
               <p className="text-sm font-bold text-white">¿Ya eres miembro Crow?</p>
               <p className="mt-1 text-xs text-zinc-400">
@@ -76,7 +76,7 @@ export default function MembershipsPage() {
               Pago en línea habilitado
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-[2rem] border-2 border-brand/50 bg-[#0a0a0a] shadow-[0_0_0_1px_rgba(201,54,232,0.25),0_20px_60px_rgba(201,54,232,0.2)]">
+          <div className="relative overflow-hidden rounded-[2rem] border-[3px] border-zinc-500 bg-zinc-900 shadow-[0_0_0_1px_rgba(201,54,232,0.25),0_20px_60px_rgba(201,54,232,0.2)]">
             <div className="absolute -right-10 -top-10 size-40 rounded-full bg-brand/25 blur-3xl" />
             <div className="absolute -bottom-12 -left-8 size-36 rounded-full bg-brand-dark/30 blur-3xl" />
 
@@ -156,7 +156,7 @@ export default function MembershipsPage() {
                 ['3 amigos', '75% off'],
                 ['4 amigos', '¡Gratis!'],
               ].map(([friends, discount]) => (
-                <div key={friends} className="rounded-2xl border-2 border-brand/45 bg-[#0b0b0b] p-5 text-center">
+                <div key={friends} className="rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 p-5 text-center">
                   <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">
                     {friends}
                   </p>
@@ -165,7 +165,7 @@ export default function MembershipsPage() {
               ))}
             </div>
           </div>
-          <figure className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border-2 border-white/25">
+          <figure className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border-[3px] border-zinc-500">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/promo-referidos.jpg"

@@ -5,7 +5,7 @@ import { NO_DELIVERY_LEGEND, pickupBranches } from '@/lib/portal/store-data';
 export function ShopPickupNotice({ compact = false }: { compact?: boolean }) {
   return (
     <aside
-      className={`rounded-2xl border-2 border-amber-500/50 bg-amber-500/10 ${
+      className={`rounded-2xl border-[3px] border-amber-500/60 bg-amber-500/10 ${
         compact ? 'px-4 py-3' : 'px-5 py-4'
       }`}
       role="note"

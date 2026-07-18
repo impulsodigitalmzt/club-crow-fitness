@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: ShopProduct }) {
   }
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border-2 border-white/25 bg-[#121214]">
+    <article className="flex flex-col overflow-hidden rounded-2xl border-[3px] border-zinc-500 bg-[#121214]">
       <div className="relative aspect-square bg-[#f3f3f3]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

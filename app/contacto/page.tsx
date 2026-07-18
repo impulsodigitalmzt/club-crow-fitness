@@ -162,7 +162,7 @@ export default function ContactPage() {
                     {branch.photos.map((photo) => (
                       <figure
                         key={photo.src + photo.alt}
-                        className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white/25"
+                        className="relative aspect-[4/3] overflow-hidden rounded-2xl border-[3px] border-zinc-500"
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
@@ -190,7 +190,7 @@ export default function ContactPage() {
 
       {panel && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm" onMouseDown={() => setPanel(null)}>
-          <div className="w-full max-w-md overflow-hidden rounded-3xl border-2 border-white/30 bg-[#101010] shadow-2xl" onMouseDown={(event) => event.stopPropagation()}>
+          <div className="w-full max-w-md overflow-hidden rounded-3xl border-[3px] border-zinc-500 bg-zinc-900 shadow-2xl" onMouseDown={(event) => event.stopPropagation()}>
             {panel === 'chat' && (
               <>
                 <div className="flex items-center justify-between bg-[#075e54] px-5 py-4">

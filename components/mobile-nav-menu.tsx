@@ -62,21 +62,21 @@ export function MobileNavMenu({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex flex-col bg-[#F3F1EC] lg:hidden"
+      className="fixed inset-0 z-[60] flex flex-col bg-[#F4F1EC] lg:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Menú de navegación"
     >
-      {/* Header */}
-      <div className="flex shrink-0 items-center justify-between px-5 pb-3 pt-[max(1rem,env(safe-area-inset-top))]">
-        <Link href="/" onClick={onClose} className="flex items-center gap-3" aria-label="Crow Fitness Club">
+      {/* Header — logo + cerrar */}
+      <div className="flex shrink-0 items-center justify-between gap-3 px-5 pb-2 pt-[max(0.85rem,env(safe-area-inset-top))]">
+        <Link href="/" onClick={onClose} className="flex min-w-0 items-center gap-2.5" aria-label="Crow Fitness Club">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="" className="size-10 object-contain" />
-          <div>
-            <span className="block font-display text-base font-black leading-none tracking-tight text-zinc-900">
+          <img src="/logo.png" alt="" className="size-10 shrink-0 object-contain" />
+          <div className="min-w-0">
+            <span className="block font-display text-[15px] font-black leading-none tracking-tight text-zinc-900">
               CROW <span className="text-brand">FITNESS</span>
             </span>
-            <span className="mt-1 block font-mono text-[8px] uppercase tracking-[0.25em] text-zinc-500">
+            <span className="mt-1 block font-mono text-[8px] uppercase tracking-[0.22em] text-zinc-500">
               Club Mazatlán
             </span>
           </div>
@@ -84,46 +84,46 @@ export function MobileNavMenu({
         <button
           type="button"
           onClick={onClose}
-          className="flex size-11 items-center justify-center rounded-full border border-zinc-300 text-zinc-800"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border-[1.5px] border-zinc-800/80 bg-white text-zinc-900"
           aria-label="Cerrar menú"
         >
-          <X className="size-5" />
+          <X className="size-5" strokeWidth={2.25} />
         </button>
       </div>
 
-      {/* Scrollable body */}
-      <div className="flex-1 overflow-y-auto px-5 pb-4">
-        {/* Featured card */}
+      {/* Contenido scroll */}
+      <div className="flex-1 space-y-3.5 overflow-y-auto px-5 pb-3">
+        {/* Card destacada */}
         <Link
           href="/membresias"
           onClick={onClose}
-          className="relative mb-4 block overflow-hidden rounded-[1.35rem] shadow-sm"
+          className="relative block overflow-hidden rounded-[1.5rem] border-[3px] border-zinc-400"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/fotos/clase-en-accion.jpg"
             alt=""
-            className="h-44 w-full object-cover"
+            className="h-[11.5rem] w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15" />
           <div className="absolute inset-0 flex flex-col justify-end p-5 text-white">
-            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-brand-light">
-              Membresías Crow
+            <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-brand-light">
+              Empieza hoy
             </p>
-            <p className="mt-1 font-display text-2xl font-black uppercase leading-none">
-              Entrena con garra
+            <p className="mt-1 font-display text-[1.65rem] font-black uppercase leading-[0.95]">
+              Tu plan Crow
             </p>
-            <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-zinc-200">
-              Planes claros, acceso a sucursales y comunidad que te empuja a avanzar.
+            <p className="mt-2 max-w-[17rem] text-[13px] leading-relaxed text-zinc-200">
+              Membresías, visitas y retos. Elige cómo entrenar y paga en línea.
             </p>
-            <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-brand-light">
-              Ver planes <ArrowUpRight className="size-3.5" />
+            <span className="mt-3 inline-flex items-center gap-1 text-[13px] font-bold text-brand-light">
+              Conocer más <ArrowUpRight className="size-3.5" />
             </span>
           </div>
         </Link>
 
-        {/* Nav list */}
-        <nav className="mb-4 overflow-hidden rounded-[1.35rem] bg-white p-2 shadow-sm">
+        {/* Navegación */}
+        <nav className="overflow-hidden rounded-[1.5rem] border-[3px] border-zinc-400 bg-[#FAF7F2] p-2">
           {menuItems.map(({ href, label, icon: Icon }) => {
             const active =
               href === '/'
@@ -134,13 +134,11 @@ export function MobileNavMenu({
                 key={href}
                 href={href}
                 onClick={onClose}
-                className={`flex items-center gap-3 rounded-2xl px-3.5 py-3.5 transition-colors ${
-                  active
-                    ? 'bg-brand/10 text-brand'
-                    : 'text-zinc-800 hover:bg-zinc-50'
+                className={`flex items-center gap-3 rounded-[1.1rem] px-3.5 py-3.5 transition-colors ${
+                  active ? 'bg-brand/15 text-brand' : 'text-zinc-900 hover:bg-black/[0.03]'
                 }`}
               >
-                <Icon className={`size-5 shrink-0 ${active ? 'text-brand' : 'text-zinc-500'}`} />
+                <Icon className={`size-[1.15rem] shrink-0 ${active ? 'text-brand' : 'text-zinc-500'}`} />
                 <span className="flex-1 text-[15px] font-semibold tracking-tight">{label}</span>
               </Link>
             );
@@ -148,18 +146,22 @@ export function MobileNavMenu({
         </nav>
 
         {/* Visítanos */}
-        <div className="mb-4 rounded-[1.35rem] bg-white p-5 shadow-sm">
+        <div className="rounded-[1.5rem] border-[3px] border-zinc-400 bg-[#FAF7F2] p-5">
           <p className="mb-4 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
             Visítanos
           </p>
-          <div className="space-y-3.5 text-sm text-zinc-700">
-            <p className="flex items-start gap-3">
-              <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
-              <span>El Toreo y Real del Valle · Mazatlán</span>
-            </p>
+          <div className="space-y-3.5 text-[13px] leading-relaxed text-zinc-700">
             <p className="flex items-start gap-3">
               <Clock3 className="mt-0.5 size-4 shrink-0 text-brand" />
-              <span>Lunes a domingo · 5:00 a.m. – 10:00 p.m.</span>
+              <span>
+                Lunes a domingo
+                <br />
+                5:00 a.m. – 10:00 p.m.
+              </span>
+            </p>
+            <p className="flex items-start gap-3">
+              <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
+              <span>El Toreo y Real del Valle, Mazatlán</span>
             </p>
             <a href="tel:6691587875" className="flex items-start gap-3 hover:text-brand">
               <Phone className="mt-0.5 size-4 shrink-0 text-brand" />
@@ -169,7 +171,7 @@ export function MobileNavMenu({
         </div>
 
         {/* Síguenos */}
-        <div className="mb-2 px-1">
+        <div className="px-0.5 pb-1">
           <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
             Síguenos
           </p>
@@ -181,7 +183,7 @@ export function MobileNavMenu({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex size-11 items-center justify-center rounded-full border border-zinc-300 text-zinc-700 transition-colors hover:border-brand hover:bg-brand/10 hover:text-brand"
+                className="inline-flex size-11 items-center justify-center rounded-full border-[1.5px] border-zinc-400 text-zinc-700 transition-colors hover:border-brand hover:text-brand"
               >
                 <Icon className="size-4" />
               </a>
@@ -190,20 +192,20 @@ export function MobileNavMenu({
         </div>
       </div>
 
-      {/* Bottom actions */}
-      <div className="shrink-0 border-t border-zinc-200/80 bg-[#F3F1EC] px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-4">
-        <div className="flex gap-3">
+      {/* Acciones inferiores */}
+      <div className="shrink-0 bg-[#F4F1EC] px-5 pb-[max(1.1rem,env(safe-area-inset-bottom))] pt-2">
+        <div className="flex gap-2.5">
           <Link
             href={memberHref}
             onClick={onClose}
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-brand py-3.5 text-center text-[11px] font-black uppercase tracking-wider text-white shadow-sm hover:bg-brand-dark"
+            className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-brand px-3 text-center text-[11px] font-black uppercase tracking-wider text-white hover:bg-brand-dark"
           >
             {loggedIn ? memberLabel : 'Acceso socios'}
           </Link>
           <Link
             href="/app/registro"
             onClick={onClose}
-            className="flex flex-1 items-center justify-center rounded-full border-2 border-brand py-3.5 text-center text-[11px] font-black uppercase tracking-wider text-brand hover:bg-brand/10"
+            className="flex min-h-12 flex-1 items-center justify-center rounded-full border-[2.5px] border-brand px-3 text-center text-[11px] font-black uppercase tracking-wider text-brand hover:bg-brand/10"
           >
             Inscribirse
           </Link>

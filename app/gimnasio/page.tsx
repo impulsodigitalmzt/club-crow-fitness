@@ -130,7 +130,7 @@ export default function GymPage() {
             {gallery.map((photo) => (
               <figure
                 key={photo.src}
-                className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/25 bg-zinc-900"
+                className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-[3px] border-zinc-500 bg-zinc-900"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -155,7 +155,7 @@ export default function GymPage() {
 
       <section className="border-t border-white/10 bg-[#090909] py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-          <div className="grid gap-px overflow-hidden rounded-3xl border-2 border-white/25 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-3xl border-[3px] border-zinc-500 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {amenities.map((item) => (
               <article key={item.title} className="bg-[#090909] p-8">
                 <item.icon className="size-6 text-brand" />

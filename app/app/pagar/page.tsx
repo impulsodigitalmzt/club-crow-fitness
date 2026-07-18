@@ -141,7 +141,7 @@ function PayContent() {
   if (done) {
     if (isShop) {
       return (
-        <div className="rounded-[1.75rem] border border-emerald-500/30 bg-[var(--portal-card)] p-8 text-center">
+        <div className="rounded-[1.75rem] border-[3px] border-emerald-500/50 bg-[var(--portal-card)] p-8 text-center">
           <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
             <Check className="size-8" />
           </span>
@@ -170,7 +170,7 @@ function PayContent() {
 
     const pendingReview = ACTIVATION_POLICY.postPaymentStatus === 'pendiente' && isSubscription;
     return (
-      <div className="rounded-[1.75rem] border border-emerald-500/30 bg-[var(--portal-card)] p-8 text-center">
+      <div className="rounded-[1.75rem] border-[3px] border-emerald-500/50 bg-[var(--portal-card)] p-8 text-center">
         <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
           <Check className="size-8" />
         </span>
@@ -217,7 +217,7 @@ function PayContent() {
         </h1>
       </header>
 
-      <div className="rounded-[1.75rem] border-2 border-white/25 bg-[var(--portal-card)] p-6">
+      <div className="rounded-[1.75rem] border-[3px] border-zinc-500 bg-[var(--portal-card)] p-6">
         <p className="text-sm text-zinc-400">Concepto</p>
         <p className="mt-1 font-display text-2xl font-black uppercase text-white">{title}</p>
         {planId ? (

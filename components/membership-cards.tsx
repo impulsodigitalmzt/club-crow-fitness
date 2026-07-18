@@ -10,7 +10,7 @@ export function MembershipCards() {
           key={plan.id}
           className={`flex min-h-[520px] flex-col rounded-[2rem] p-7 sm:p-9 ${
             plan.popular
-              ? 'bg-white text-black shadow-2xl shadow-brand/20 lg:-translate-y-3'
+              ? 'border-[3px] border-zinc-400 bg-white text-black shadow-2xl shadow-brand/20 lg:-translate-y-3'
               : 'border-[3px] border-zinc-500 bg-zinc-900 text-white shadow-[0_12px_40px_rgba(0,0,0,0.45)]'
           }`}
         >

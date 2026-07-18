@@ -79,13 +79,13 @@ export default function TiendaPage() {
           </div>
 
           {isMember ? (
-            <div className="mb-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-200">
+            <div className="mb-8 rounded-2xl border-[3px] border-emerald-500/50 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-200">
               Socio Crow: tienes{' '}
               <strong>{Math.round(MEMBER_SHOP_DISCOUNT * 100)}% de descuento</strong> en todos los
               productos.
             </div>
           ) : (
-            <div className="mb-8 rounded-2xl border-2 border-white/25 bg-[#111] px-5 py-4 text-sm text-zinc-400">
+            <div className="mb-8 rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 px-5 py-4 text-sm text-zinc-400">
               ¿Eres miembro?{' '}
               <Link href="/app/login?next=/tienda" className="font-bold text-brand-light underline">
                 Inicia sesión

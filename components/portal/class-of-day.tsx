@@ -11,7 +11,7 @@ export function ClassOfDayCard({
   const wod = dayClass.wod ?? routine.blocks.find((b) => b.label === 'WOD')?.detail;
 
   return (
-    <section className="overflow-hidden rounded-[1.75rem] border-2 border-[var(--portal-border)] bg-[var(--portal-card)]">
+    <section className="overflow-hidden rounded-[1.75rem] border-[3px] border-zinc-500 bg-[var(--portal-card)]">
       <div className="border-b border-white/10 px-5 py-4">
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--portal-brand-light)]">
           Hoy en Crow
@@ -20,7 +20,7 @@ export function ClassOfDayCard({
       </div>
 
       <div className="space-y-4 p-5">
-        <div className="rounded-2xl border-2 border-[var(--portal-brand)]/40 bg-[var(--portal-brand)]/10 p-4">
+        <div className="rounded-2xl border-[3px] border-zinc-500 bg-[var(--portal-brand)]/10 p-4">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="font-display text-2xl font-black uppercase text-white">{dayClass.name}</p>
@@ -41,7 +41,7 @@ export function ClassOfDayCard({
         </div>
 
         {wod ? (
-          <div className="rounded-2xl border-2 border-white/25 bg-black/50 p-4">
+          <div className="rounded-2xl border-[3px] border-zinc-500 bg-black/50 p-4">
             <div className="mb-2 flex items-center gap-2">
               <Flame className="size-4 text-[var(--portal-brand)]" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-white">WOD</h3>
@@ -64,7 +64,7 @@ export function ClassOfDayCard({
             {routine.blocks.map((block) => (
               <li
                 key={block.label}
-                className="flex gap-3 rounded-xl border-2 border-white/25 bg-black/40 px-3 py-3"
+                className="flex gap-3 rounded-xl border-[3px] border-zinc-500 bg-black/40 px-3 py-3"
               >
                 <span className="mt-0.5 size-1.5 shrink-0 rounded-full bg-[var(--portal-brand)]" />
                 <div>

@@ -131,7 +131,7 @@ export default function CoachAiPage() {
               ['02', 'Rutina diaria incluida', 'No necesitas improvisar: cada día encuentras una estructura de entrenamiento preparada.'],
               ['03', 'Instructor en turno', 'Recibes orientación en piso para ejecutar los ejercicios y resolver tus dudas.'],
             ].map(([number, title, copy]) => (
-              <article key={number} className="rounded-3xl border-2 border-white/25 bg-[#0b0b0b] p-7">
+              <article key={number} className="rounded-3xl border-[3px] border-zinc-500 bg-zinc-900 p-7">
                 <p className="font-mono text-[10px] font-bold tracking-[0.2em] text-brand">{number}</p>
                 <h3 className="mt-5 font-display text-xl font-black uppercase text-white">{title}</h3>
                 <p className="mt-3 text-base leading-relaxed text-zinc-500">{copy}</p>
@@ -139,7 +139,7 @@ export default function CoachAiPage() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-3xl border-2 border-brand/45 bg-[radial-gradient(circle_at_0%_0%,rgba(201,54,232,.18),transparent_35%),#0b0b0b] p-7 sm:p-9">
+          <div className="mt-16 rounded-3xl border-[3px] border-zinc-500 bg-[radial-gradient(circle_at_0%_0%,rgba(201,54,232,.18),transparent_35%),#18181b] p-7 sm:p-9">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">Para quienes siguen su propio plan</p>
             <h2 className="mt-3 font-display text-3xl font-black uppercase text-white">Crow Coach IA es una opción adicional</h2>
             <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-400">
@@ -148,7 +148,7 @@ export default function CoachAiPage() {
           </div>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
-          <div className="h-fit rounded-3xl border-2 border-brand/50 bg-[#141414] p-7 sm:p-9">
+          <div className="h-fit rounded-3xl border-[3px] border-zinc-500 bg-[#141414] p-7 sm:p-9">
             <div className="flex items-center gap-3">
               <span className="rounded-xl bg-brand/15 p-3 text-brand"><Bot className="size-6" /></span>
               <div>
@@ -175,7 +175,7 @@ export default function CoachAiPage() {
             </button>
           </div>
 
-          <div className="min-h-[620px] rounded-3xl border-2 border-white/25 bg-[#080808] p-7 sm:p-10">
+          <div className="min-h-[620px] rounded-3xl border-[3px] border-zinc-500 bg-zinc-900 p-7 sm:p-10">
             {routine ? (
               <div>
                 <div className="flex flex-col gap-5 border-b border-white/10 pb-7 sm:flex-row sm:items-start sm:justify-between">
@@ -193,7 +193,7 @@ export default function CoachAiPage() {
 
                 <div className="mt-7 grid gap-4 xl:grid-cols-2">
                   {routine.days.map((day) => (
-                    <article key={day.name} className="rounded-2xl border-2 border-white/25 bg-[#0d0d0d] p-5">
+                    <article key={day.name} className="rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 p-5">
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-brand">{day.name}</p>
@@ -214,11 +214,11 @@ export default function CoachAiPage() {
                 </div>
 
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border-2 border-brand/40 bg-brand/5 p-5">
+                  <div className="rounded-2xl border-[3px] border-zinc-500 bg-brand/5 p-5">
                     <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white"><Clock3 className="size-4 text-brand" /> Descansos</p>
                     <p className="mt-3 text-sm leading-relaxed text-zinc-300 sm:text-base">{routine.rest}</p>
                   </div>
-                  <div className="rounded-2xl border-2 border-brand/40 bg-brand/5 p-5">
+                  <div className="rounded-2xl border-[3px] border-zinc-500 bg-brand/5 p-5">
                     <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white"><Sparkles className="size-4 text-brand" /> Progresión</p>
                     <p className="mt-3 text-sm leading-relaxed text-zinc-300 sm:text-base">{routine.progression}</p>
                   </div>

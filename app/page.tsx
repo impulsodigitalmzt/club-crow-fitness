@@ -67,7 +67,7 @@ export default function HomePage() {
 
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {experiences.map((item) => (
-              <Link key={item.href} href={item.href} className="group relative min-h-[500px] overflow-hidden rounded-3xl border-2 border-white/25">
+              <Link key={item.href} href={item.href} className="group relative min-h-[500px] overflow-hidden rounded-3xl border-[3px] border-zinc-500">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={item.image} alt="" className="absolute inset-0 size-full object-cover opacity-90 transition duration-700 group-hover:scale-105 group-hover:opacity-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-transparent" />
@@ -122,7 +122,7 @@ export default function HomePage() {
             </FadeUp>
           </div>
 
-          <div className="rounded-[2rem] border-2 border-brand/50 bg-[radial-gradient(circle_at_20%_0%,rgba(201,54,232,.25),transparent_45%),#111] p-7 sm:p-9">
+          <div className="rounded-[2rem] border-[3px] border-zinc-500 bg-[radial-gradient(circle_at_20%_0%,rgba(201,54,232,.25),transparent_45%),#18181b] p-7 sm:p-9">
             <p className="text-xs font-bold uppercase tracking-wider text-brand-light">Dentro de la app</p>
             <ul className="mt-5 space-y-4 text-sm text-zinc-300">
               <li className="flex gap-3">

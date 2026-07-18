@@ -3,7 +3,7 @@ import type { DigitalPass } from '@/lib/digital-pass';
 
 export function DigitalPassCard({ pass }: { pass: DigitalPass }) {
   return (
-    <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-[1.5rem] border-2 border-brand/55 bg-[radial-gradient(circle_at_90%_10%,rgba(201,54,232,.45),transparent_35%),linear-gradient(135deg,#171717,#050505)] p-5 shadow-2xl shadow-brand/15 sm:rounded-[2rem] sm:p-8">
+    <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-[1.5rem] border-[3px] border-zinc-500 bg-[radial-gradient(circle_at_90%_10%,rgba(201,54,232,.45),transparent_35%),linear-gradient(135deg,#171717,#050505)] p-5 shadow-2xl shadow-brand/15 sm:rounded-[2rem] sm:p-8">
       <div className="flex items-start justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}

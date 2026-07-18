@@ -43,10 +43,10 @@ export default function MemberDashboardPage() {
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex flex-col items-center gap-2 rounded-2xl border px-2 py-3 text-center transition active:scale-[0.98] ${
+              className={`flex flex-col items-center gap-2 rounded-2xl border-[3px] px-2 py-3 text-center transition active:scale-[0.98] ${
                 highlight
-                  ? 'border-[var(--portal-brand)]/50 bg-[var(--portal-brand)]/15'
-                  : 'border-white/10 bg-[var(--portal-card)] hover:border-white/25'
+                  ? 'border-brand bg-[var(--portal-brand)]/15'
+                  : 'border-zinc-500 bg-[var(--portal-card)] hover:border-zinc-400'
               }`}
             >
               <span
@@ -69,7 +69,7 @@ export default function MemberDashboardPage() {
       <AccountStatusCard profile={member} />
       <ClassOfDayCard dayClass={todayClass} routine={todayRoutine} />
 
-      <section className="overflow-hidden rounded-[1.75rem] border-2 border-white/25 bg-[var(--portal-card)]">
+      <section className="overflow-hidden rounded-[1.75rem] border-[3px] border-zinc-500 bg-[var(--portal-card)]">
         <Link href="/app/tienda" className="flex items-center gap-4 p-5 active:bg-white/5">
           <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--portal-brand)] text-white">
             <ShoppingBag className="size-6" />
