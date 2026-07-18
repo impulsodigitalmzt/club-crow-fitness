@@ -14,6 +14,7 @@ import {
   cartItemCount,
   cartPricing,
   cartSubtotal,
+  getShopProduct,
   isCrowMemberForDiscount,
   type CartItem,
   type ShopProduct,
@@ -39,13 +40,22 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
+function hydrateCartItem(item: CartItem): CartItem {
+  if (item.description) return item;
+  const catalog = getShopProduct(item.productId);
+  return {
+    ...item,
+    description: catalog?.description ?? '',
+  };
+}
+
 function readCart(): CartItem[] {
   if (typeof window === 'undefined') return [];
   try {
     const raw = window.localStorage.getItem(CART_STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw) as CartItem[];
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed.map(hydrateCartItem) : [];
   } catch {
     return [];
   }
@@ -95,6 +105,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             name: product.name,
             price: product.price,
             image: product.image,
+            description: product.description,
             qty,
           },
         ];

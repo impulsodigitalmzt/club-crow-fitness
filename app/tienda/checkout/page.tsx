@@ -258,10 +258,10 @@ export default function TiendaCheckoutPage() {
           </Link>
           <button
             type="button"
-            onClick={() => router.push('/')}
+            onClick={() => router.push('/tienda')}
             className="mt-3 w-full text-xs font-bold text-zinc-500 hover:text-white"
           >
-            Ir al inicio
+            Volver a la tienda
           </button>
         </div>
       </section>
