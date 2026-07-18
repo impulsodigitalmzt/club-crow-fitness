@@ -24,10 +24,10 @@ export function CartDrawer() {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center">
+    <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center">
       <button
         type="button"
-        className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
+        className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"
         aria-label="Cerrar carrito"
         onClick={() => setOpen(false)}
       />
@@ -36,7 +36,7 @@ export function CartDrawer() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="cart-title"
-        className="relative z-10 flex max-h-[85dvh] w-full max-w-lg flex-col rounded-t-[1.75rem] border border-white/10 bg-[#121214] text-white shadow-2xl sm:rounded-[1.75rem]"
+        className="relative z-10 flex max-h-[88dvh] w-full max-w-lg flex-col rounded-t-[1.75rem] border border-white/10 bg-[#121214] text-white shadow-2xl sm:mx-4 sm:rounded-[1.75rem]"
       >
         <header className="flex items-center justify-between border-b border-white/10 px-5 py-4">
           <div>

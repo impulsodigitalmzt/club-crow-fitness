@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import { BrandLogo } from './brand-logo';
 import { SocialLinks } from './social-links';
 
@@ -17,7 +17,7 @@ const navigation = [
   { href: '/contacto', label: 'Contacto' },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -28,7 +28,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-7 lg:flex">
           {navigation.map((item) => {
-            const active = pathname === item.href;
+            const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
             return (
               <Link
                 key={item.href}
@@ -43,7 +43,8 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {cartSlot ? <div className="flex items-center">{cartSlot}</div> : null}
           <SocialLinks className="hidden sm:flex" />
 
           <Link
@@ -74,14 +75,17 @@ export function SiteHeader() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`border-b border-white/10 py-4 font-display text-xl font-black uppercase ${
-                  pathname === item.href ? 'text-brand' : 'text-white'
+                  pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+                    ? 'text-brand'
+                    : 'text-white'
                 }`}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="flex items-center justify-between pt-5">
+            <div className="flex items-center justify-between gap-3 pt-5">
               <SocialLinks />
+              {cartSlot}
               <Link
                 href="/app/registro"
                 onClick={() => setOpen(false)}

@@ -3,6 +3,8 @@
 import { usePathname } from 'next/navigation';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { CartProvider } from '@/components/portal/cart-context';
+import { CartDrawer, CartHeaderButton } from '@/components/portal/cart-drawer';
 
 /**
  * Muestra el chrome de la landing solo fuera de /admin y /login,
@@ -16,8 +18,21 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
     pathname === '/login' ||
     pathname.startsWith('/api/');
 
+  const isShop = pathname.startsWith('/tienda');
+
   if (isAppShell) {
     return <>{children}</>;
+  }
+
+  if (isShop) {
+    return (
+      <CartProvider>
+        <SiteHeader cartSlot={<CartHeaderButton />} />
+        <main>{children}</main>
+        <SiteFooter />
+        <CartDrawer />
+      </CartProvider>
+    );
   }
 
   return (

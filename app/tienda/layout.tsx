@@ -1,14 +1,6 @@
 'use client';
 
-import { CartProvider } from '@/components/portal/cart-context';
-import { CartDrawer } from '@/components/portal/cart-drawer';
-
-/** Tienda pública: carrito compartido con el Portal (localStorage). */
+/** Layout de /tienda: el carrito vive en SiteChrome para verse en el header. */
 export default function TiendaLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <CartProvider>
-      {children}
-      <CartDrawer />
-    </CartProvider>
-  );
+  return <>{children}</>;
 }

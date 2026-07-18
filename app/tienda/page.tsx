@@ -6,7 +6,6 @@ import { ShoppingBag } from 'lucide-react';
 import { ContactCta } from '@/components/contact-cta';
 import { PageHero } from '@/components/page-hero';
 import { ProductCard } from '@/components/portal/product-card';
-import { CartHeaderButton } from '@/components/portal/cart-drawer';
 import { useCart } from '@/components/portal/cart-context';
 import { ShopPickupNotice } from '@/components/shop/pickup-notice';
 import {
@@ -53,7 +52,6 @@ export default function TiendaPage() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <CartHeaderButton />
               {count > 0 ? (
                 <button
                   type="button"
@@ -61,9 +59,18 @@ export default function TiendaPage() {
                   className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
                 >
                   <ShoppingBag className="size-4" />
-                  Carrito · ${total.toLocaleString('es-MX')}
+                  Ver carrito · ${total.toLocaleString('es-MX')}
                 </button>
-              ) : null}
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-xs font-black uppercase tracking-wider text-zinc-300 hover:border-brand hover:text-white"
+                >
+                  <ShoppingBag className="size-4" />
+                  Carrito
+                </button>
+              )}
             </div>
           </div>
 
