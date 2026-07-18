@@ -34,7 +34,7 @@ export function middleware(request: NextRequest) {
 
   if (pathname.startsWith('/app') && !isPortalPublic && !isMember) {
     const loginUrl = new URL('/app/login', request.url);
-    loginUrl.searchParams.set('next', pathname);
+    loginUrl.searchParams.set('next', `${pathname}${request.nextUrl.search}`);
     return NextResponse.redirect(loginUrl);
   }
 

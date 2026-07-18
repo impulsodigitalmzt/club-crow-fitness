@@ -6,6 +6,33 @@ import { PageHero } from '@/components/page-hero';
 
 type Panel = 'chat' | 'phone' | 'instagram' | null;
 
+const branches = [
+  {
+    id: '01',
+    name: 'El Toreo',
+    address: 'Silverio Pérez, Ponciano Díaz 132, El Toreo, 82120 Mazatlán, Sin.',
+    mapEmbed:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.8807289422825!2d-106.4389001!3d23.2474269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869f53006009ac9d%3A0xcdbe24509e2288ca!2sCrow%20Fitness%20Club!5e0!3m2!1ses-419!2smx!4v1784277478352!5m2!1ses-419!2smx',
+    directions: 'https://www.google.com/maps/dir/?api=1&destination=23.2474269,-106.4389001',
+    photos: [
+      { src: '/fotos/gym1.JPG', alt: 'Fachada Crow El Toreo' },
+      { src: '/fotos/gym.JPG', alt: 'Crow El Toreo de noche' },
+    ],
+  },
+  {
+    id: '02',
+    name: 'Real del Valle',
+    address: 'Av. Paseo del Atlántico 4214, Real del Valle, 82124 Mazatlán, Sin.',
+    mapEmbed:
+      'https://maps.google.com/maps?q=Av.+Paseo+del+Atl%C3%A1ntico+4214,+Real+del+Valle,+82124+Mazatl%C3%A1n,+Sin.&z=16&output=embed',
+    directions: 'https://maps.app.goo.gl/7WZFVo7XnTJMJnFY9',
+    photos: [
+      { src: '/fotos/gym3.JPG', alt: 'Fachada Crow Real del Valle' },
+      { src: '/fotos/area-peso-libre.jpg', alt: 'Área de entrenamiento Crow Real del Valle' },
+    ],
+  },
+] as const;
+
 export default function ContactPage() {
   const [panel, setPanel] = useState<Panel>(null);
   const [message, setMessage] = useState('');
@@ -51,7 +78,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <form onSubmit={submitContact} className="rounded-3xl border-2 border-brand/50 bg-[#141414] p-7 sm:p-10">
+          <form onSubmit={submitContact} className="rounded-3xl border-[3px] border-zinc-500 bg-zinc-900 p-7 sm:p-10">
             {submitted ? (
               <div className="flex min-h-[520px] flex-col items-center justify-center text-center">
                 <span className="flex size-16 items-center justify-center rounded-full bg-brand/15 text-brand"><Check className="size-8" /></span>
@@ -105,86 +132,58 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {/* Sucursal El Toreo */}
-            <article className="overflow-hidden rounded-[2rem] border-2 border-white/25 bg-black">
-              <div className="overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.8807289422825!2d-106.4389001!3d23.2474269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869f53006009ac9d%3A0xcdbe24509e2288ca!2sCrow%20Fitness%20Club!5e0!3m2!1ses-419!2smx!4v1784277478352!5m2!1ses-419!2smx"
-                  title="Crow Fitness Club · Sucursal El Toreo"
-                  className="h-56 w-full border-0"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                />
-              </div>
-              <div className="p-6 sm:p-7">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">Sucursal 01</p>
-                <h3 className="mt-2 font-display text-2xl font-black uppercase text-white">El Toreo</h3>
-                <p className="mt-3 flex gap-3 text-base leading-relaxed text-zinc-400">
-                  <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
-                  Silverio Pérez, Ponciano Díaz 132, El Toreo, 82120 Mazatlán, Sin.
-                </p>
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white/25">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/fotos/gym1.JPG" alt="Fachada Crow El Toreo" className="absolute inset-0 size-full object-cover" />
-                  </figure>
-                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white/25">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/fotos/gym.JPG" alt="Crow El Toreo de noche" className="absolute inset-0 size-full object-cover" />
-                  </figure>
-                </div>
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=23.2474269,-106.4389001"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-4 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
-                >
-                  <Navigation className="size-4" /> Cómo llegar · El Toreo
-                </a>
-              </div>
-            </article>
-
-            {/* Sucursal Real del Valle */}
-            <article className="overflow-hidden rounded-[2rem] border-2 border-brand/50 bg-black shadow-[0_0_40px_rgba(201,54,232,0.12)]">
-              <figure className="relative aspect-[16/10] overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/fotos/gym3.JPG"
-                  alt="Fachada Crow Fitness Club Real del Valle"
-                  className="absolute inset-0 size-full object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-                <figcaption className="absolute bottom-4 left-5 right-5">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand-light">Sucursal 02</p>
-                  <p className="mt-1 font-display text-2xl font-black uppercase text-white">Real del Valle</p>
-                </figcaption>
-              </figure>
-              <div className="p-6 sm:p-7">
-                <p className="flex gap-3 text-base leading-relaxed text-zinc-400">
-                  <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
-                  Av. Paseo del Atlántico 4214, Real del Valle, 82124 Mazatlán, Sin.
-                </p>
-                <div className="mt-5 overflow-hidden rounded-2xl border-2 border-white/25">
+            {branches.map((branch) => (
+              <article
+                key={branch.id}
+                className="flex flex-col overflow-hidden rounded-[2rem] border-[3px] border-zinc-500 bg-zinc-900"
+              >
+                <div className="overflow-hidden">
                   <iframe
-                    src="https://maps.google.com/maps?q=Av.+Paseo+del+Atl%C3%A1ntico+4214,+Real+del+Valle,+82124+Mazatl%C3%A1n,+Sin.&z=16&output=embed"
-                    title="Crow Fitness Club · Sucursal Real del Valle"
-                    className="h-48 w-full border-0"
+                    src={branch.mapEmbed}
+                    title={`Crow Fitness Club · Sucursal ${branch.name}`}
+                    className="h-56 w-full border-0"
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="strict-origin-when-cross-origin"
                   />
                 </div>
-                <a
-                  href="https://maps.app.goo.gl/7WZFVo7XnTJMJnFY9"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-4 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
-                >
-                  <Navigation className="size-4" /> Cómo llegar · Real del Valle
-                </a>
-              </div>
-            </article>
+                <div className="flex flex-1 flex-col p-6 sm:p-7">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
+                    Sucursal {branch.id}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl font-black uppercase text-white">
+                    {branch.name}
+                  </h3>
+                  <p className="mt-3 flex gap-3 text-base leading-relaxed text-zinc-300">
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
+                    {branch.address}
+                  </p>
+                  <div className="mt-5 grid grid-cols-2 gap-3">
+                    {branch.photos.map((photo) => (
+                      <figure
+                        key={photo.src + photo.alt}
+                        className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white/25"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={photo.src}
+                          alt={photo.alt}
+                          className="absolute inset-0 size-full object-cover"
+                        />
+                      </figure>
+                    ))}
+                  </div>
+                  <a
+                    href={branch.directions}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-4 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
+                  >
+                    <Navigation className="size-4" /> Cómo llegar · {branch.name}
+                  </a>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -260,7 +259,8 @@ export default function ContactPage() {
 }
 
 function ContactItem({ icon: Icon, title, text, onClick }: { icon: typeof Phone; title: string; text: string; onClick?: () => void }) {
-  const className = 'flex w-full gap-4 rounded-2xl border-2 border-white/25 p-5 text-left transition-colors hover:border-brand/30';
+  const className =
+    'flex w-full gap-4 rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 p-5 text-left transition-colors hover:border-zinc-400';
   const content = <>
     <Icon className="size-5 shrink-0 text-brand" />
     <span><span className="block text-xs font-bold uppercase tracking-wider text-white">{title}</span><span className="mt-1 block text-sm text-zinc-400">{text}</span></span>

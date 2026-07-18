@@ -31,11 +31,12 @@ export const membershipPlans = [
 /** Inscripción única al activar plan (excepto visita). */
 export const enrollmentFee = 250;
 
+/** Otros servicios y periodos cortos pagables en línea. */
 export const otherRates = [
-  ['Semana', 450],
-  ['Quincenal', 800],
-  ['Tarjeta de visitas', 1700],
-  ['Inscripción', 250],
+  { id: 'semana', label: 'Semana', price: 450 },
+  { id: 'quincenal', label: 'Quincenal', price: 800 },
+  { id: 'tarjeta-visitas', label: 'Tarjeta de visitas', price: 1700 },
+  { id: 'inscripcion', label: 'Inscripción', price: 250 },
 ] as const;
 
 export const classes = [

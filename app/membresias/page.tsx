@@ -5,6 +5,8 @@ import { MembershipCards } from '@/components/membership-cards';
 import { PageHero } from '@/components/page-hero';
 import { SectionHeading } from '@/components/section-heading';
 import { otherRates } from '@/lib/site-data';
+import { activeChallenges } from '@/lib/portal/mock-data';
+import { buildChallengeCheckoutUrl } from '@/lib/portal/payments';
 
 export default function MembershipsPage() {
   return (
@@ -29,7 +31,8 @@ export default function MembershipsPage() {
                 Pago en línea disponible
               </p>
               <p className="mt-1 text-sm leading-relaxed text-zinc-200 sm:text-base">
-                Ya puedes pagar tu membresía, visita o inscripción en línea con tarjeta, de forma segura y con activación inmediata.
+                Ya puedes pagar tu membresía, visita, inscripción o retos en línea con tarjeta, de forma
+                segura y con activación inmediata.
               </p>
             </div>
           </div>
@@ -66,7 +69,7 @@ export default function MembershipsPage() {
             <SectionHeading
               eyebrow="Más flexibilidad"
               title={'OTRAS FORMAS\nDE *ENTRENAR.*'}
-              description="¿Todavía no quieres una membresía? También contamos con periodos cortos y tarjetas de visitas. Todos estos costos se pueden pagar en línea desde la web."
+              description="¿Todavía no quieres una membresía? También contamos con periodos cortos, tarjetas de visitas y retos con inscripción. Todos estos costos se pueden pagar en línea desde la web."
             />
             <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-brand/35 bg-brand/10 px-4 py-2 text-xs font-bold uppercase tracking-wider text-brand-light">
               <CreditCard className="size-3.5" />
@@ -85,22 +88,46 @@ export default function MembershipsPage() {
             </div>
 
             <div className="relative">
-              {otherRates.map(([label, price]) => (
+              {otherRates.map((rate) => (
                 <div
-                  key={label}
+                  key={rate.id}
                   className="flex items-center justify-between border-t border-white/10 px-7 py-5"
                 >
-                  <span className="text-sm font-bold uppercase tracking-wider text-zinc-300">{label}</span>
+                  <span className="text-sm font-bold uppercase tracking-wider text-zinc-300">
+                    {rate.label}
+                  </span>
                   <span className="font-mono text-xl font-bold text-white">
-                    ${price.toLocaleString('es-MX')}
+                    ${rate.price.toLocaleString('es-MX')}
                   </span>
                 </div>
+              ))}
+
+              <div className="border-t border-white/10 bg-brand/10 px-7 py-3">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand-light">
+                  Retos · Inscripción
+                </p>
+              </div>
+
+              {activeChallenges.map((challenge) => (
+                <Link
+                  key={challenge.id}
+                  href={buildChallengeCheckoutUrl(challenge.id, challenge.price)}
+                  className="flex items-center justify-between border-t border-white/10 px-7 py-5 transition-colors hover:bg-white/5"
+                >
+                  <span className="text-sm font-bold uppercase tracking-wider text-zinc-300">
+                    {challenge.title}
+                  </span>
+                  <span className="font-mono text-xl font-bold text-brand-light">
+                    ${challenge.price.toLocaleString('es-MX')}
+                  </span>
+                </Link>
               ))}
             </div>
 
             <div className="relative border-t border-white/10 bg-black/40 p-6">
               <p className="mb-4 text-center text-sm leading-relaxed text-zinc-400">
-                Paga semana, quincena, tarjeta de visitas o inscripción con tarjeta, sin ir a recepción.
+                Paga semana, quincena, tarjeta de visitas, inscripción o retos con tarjeta, sin ir a
+                recepción.
               </p>
               <Link
                 href="/checkout?tipo=renovar&plan=visita"
@@ -130,7 +157,9 @@ export default function MembershipsPage() {
                 ['4 amigos', '¡Gratis!'],
               ].map(([friends, discount]) => (
                 <div key={friends} className="rounded-2xl border-2 border-brand/45 bg-[#0b0b0b] p-5 text-center">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">{friends}</p>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                    {friends}
+                  </p>
                   <p className="mt-2 font-display text-2xl font-black uppercase text-brand">{discount}</p>
                 </div>
               ))}
@@ -138,7 +167,11 @@ export default function MembershipsPage() {
           </div>
           <figure className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border-2 border-white/25">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/fotos/promo-referidos.jpg" alt="Promoción de referidos Crow: descuentos por cada amigo inscrito" className="w-full" />
+            <img
+              src="/fotos/promo-referidos.jpg"
+              alt="Promoción de referidos Crow: descuentos por cada amigo inscrito"
+              className="w-full"
+            />
           </figure>
         </div>
       </section>

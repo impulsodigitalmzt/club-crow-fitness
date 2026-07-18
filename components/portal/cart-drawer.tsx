@@ -155,13 +155,22 @@ export function CartDrawer() {
                 </span>
               </div>
             </div>
-            <Link
-              href={checkoutUrl}
-              onClick={() => setOpen(false)}
-              className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-brand text-sm font-black uppercase tracking-wider text-white hover:bg-brand-dark"
-            >
-              Proceder al pago
-            </Link>
+            <div className="mt-3 flex gap-2.5">
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="flex min-h-14 flex-1 items-center justify-center rounded-2xl border-2 border-white/25 text-xs font-black uppercase tracking-wider text-white hover:border-white/40 hover:bg-white/5"
+              >
+                Seguir comprando
+              </button>
+              <Link
+                href={checkoutUrl}
+                onClick={() => setOpen(false)}
+                className="flex min-h-14 flex-[1.35] items-center justify-center rounded-2xl bg-brand px-3 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark sm:text-sm"
+              >
+                Proceder al pago
+              </Link>
+            </div>
           </footer>
         ) : null}
       </aside>
