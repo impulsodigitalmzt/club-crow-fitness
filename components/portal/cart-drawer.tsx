@@ -18,7 +18,6 @@ export function CartDrawer() {
     setQty,
     removeItem,
     count,
-    checkoutUrl,
   } = useCart();
 
   if (!open) return null;
@@ -164,11 +163,11 @@ export function CartDrawer() {
                 Seguir comprando
               </button>
               <Link
-                href={checkoutUrl}
+                href="/tienda/carrito"
                 onClick={() => setOpen(false)}
                 className="flex min-h-14 flex-[1.35] items-center justify-center rounded-2xl bg-brand px-3 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark sm:text-sm"
               >
-                Proceder al pago
+                Continuar
               </Link>
             </div>
           </footer>
@@ -179,21 +178,25 @@ export function CartDrawer() {
 }
 
 export function CartHeaderButton() {
-  const { count, setOpen } = useCart();
+  const { count, total } = useCart();
 
   return (
-    <button
-      type="button"
-      onClick={() => setOpen(true)}
-      className="relative flex size-9 items-center justify-center rounded-full border border-white/15 text-zinc-400 transition hover:border-brand/50 hover:text-brand-light"
-      aria-label="Abrir carrito"
+    <Link
+      href="/tienda/carrito"
+      className="relative flex items-center gap-1.5 rounded-full border border-white/15 px-2.5 py-2 text-zinc-400 transition hover:border-brand/50 hover:text-brand-light"
+      aria-label="Ir al carrito de compras"
     >
       <ShoppingBag className="size-4" />
       {count > 0 ? (
-        <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-brand text-[9px] font-black text-white">
-          {count > 9 ? '9+' : count}
-        </span>
+        <>
+          <span className="absolute -right-1 -top-1 flex size-4 items-center justify-center rounded-full bg-brand text-[9px] font-black text-white">
+            {count > 9 ? '9+' : count}
+          </span>
+          <span className="hidden font-mono text-[10px] font-bold text-white sm:inline">
+            ${total.toLocaleString('es-MX')}
+          </span>
+        </>
       ) : null}
-    </button>
+    </Link>
   );
 }

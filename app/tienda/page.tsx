@@ -18,7 +18,7 @@ import {
 export default function TiendaPage() {
   const [products, setProducts] = useState<ShopProduct[]>([]);
   const [isMember, setIsMember] = useState(false);
-  const { count, setOpen, total, refreshMember } = useCart();
+  const { count, total, refreshMember } = useCart();
 
   useEffect(() => {
     setProducts(loadShopCatalog());
@@ -48,29 +48,23 @@ export default function TiendaPage() {
                 Productos Crow
               </h2>
               <p className="mt-3 max-w-xl text-sm text-zinc-400">
-                Compra en línea con pago seguro. Tu pedido queda listo para recoger en sucursal.
+                Compra en línea: agrega al carrito y paga cuando quieras. Recoges en sucursal.
               </p>
             </div>
             <div className="flex items-center gap-3">
-              {count > 0 ? (
-                <button
-                  type="button"
-                  onClick={() => setOpen(true)}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
-                >
-                  <ShoppingBag className="size-4" />
-                  Ver carrito · ${total.toLocaleString('es-MX')}
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setOpen(true)}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-xs font-black uppercase tracking-wider text-zinc-300 hover:border-brand hover:text-white"
-                >
-                  <ShoppingBag className="size-4" />
-                  Carrito
-                </button>
-              )}
+              <Link
+                href="/tienda/carrito"
+                className={`inline-flex items-center gap-2 rounded-full px-5 py-3 text-xs font-black uppercase tracking-wider ${
+                  count > 0
+                    ? 'bg-brand text-white hover:bg-brand-dark'
+                    : 'border border-white/15 text-zinc-300 hover:border-brand hover:text-white'
+                }`}
+              >
+                <ShoppingBag className="size-4" />
+                {count > 0
+                  ? `Ver carrito · $${total.toLocaleString('es-MX')}`
+                  : 'Carrito'}
+              </Link>
             </div>
           </div>
 
@@ -104,19 +98,18 @@ export default function TiendaPage() {
 
       {count > 0 ? (
         <div className="fixed inset-x-0 bottom-4 z-40 px-4 lg:hidden">
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="mx-auto flex w-full max-w-lg min-h-14 items-center justify-between rounded-2xl border border-brand/40 bg-black/95 px-5 text-white shadow-2xl backdrop-blur-xl"
+          <Link
+            href="/tienda/carrito"
+            className="mx-auto flex w-full max-w-lg min-h-14 items-center justify-between rounded-2xl border-[3px] border-zinc-500 bg-black/95 px-5 text-white shadow-2xl backdrop-blur-xl"
           >
             <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
               {count} en carrito
             </span>
             <span className="font-display text-lg font-black">${total.toLocaleString('es-MX')}</span>
             <span className="rounded-xl bg-brand px-4 py-2 text-[10px] font-black uppercase tracking-wider">
-              Pagar
+              Ver carrito
             </span>
-          </button>
+          </Link>
         </div>
       ) : null}
 

@@ -101,7 +101,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       persist(next);
       setIsMember(isCrowMemberForDiscount());
-      setOpen(true);
       return next;
     },
     [persist],

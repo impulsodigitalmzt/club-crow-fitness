@@ -1,6 +1,6 @@
 'use client';
 
-import { CreditCard, ShoppingBag } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 import {
   isCrowMemberForDiscount,
   memberUnitPrice,
@@ -10,13 +10,12 @@ import {
 import { useCart } from '@/components/portal/cart-context';
 
 export function ProductCard({ product }: { product: ShopProduct }) {
-  const { addItem, setOpen, isMember } = useCart();
+  const { addItem, isMember } = useCart();
   const member = isMember || isCrowMemberForDiscount();
   const displayPrice = memberUnitPrice(product.price, member);
 
   function addToCart() {
     addItem(product, 1);
-    setOpen(true);
   }
 
   return (
@@ -56,7 +55,7 @@ export function ProductCard({ product }: { product: ShopProduct }) {
           ) : null}
         </div>
 
-        <div className="mt-auto grid gap-2 pt-4">
+        <div className="mt-auto pt-4">
           <button
             type="button"
             onClick={addToCart}
@@ -64,14 +63,6 @@ export function ProductCard({ product }: { product: ShopProduct }) {
           >
             <ShoppingBag className="size-4" />
             Agregar al carrito
-          </button>
-          <button
-            type="button"
-            onClick={addToCart}
-            className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 text-[11px] font-black uppercase tracking-wider text-white active:scale-[0.98] hover:border-brand"
-          >
-            <CreditCard className="size-3.5" />
-            Ver carrito y pagar
           </button>
         </div>
       </div>
