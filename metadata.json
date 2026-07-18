@@ -1,0 +1,6 @@
+{
+  "name": "Crow Fitness Club",
+  "description": "Sitio web oficial de Crow Fitness Club en Mazatlán, Sinaloa. El gimnasio de alto rendimiento inspirado en Today Fitness con acceso 24/7, equipamiento de última generación, clases grupales y rutinas personalizadas de entrenamiento impulsadas por IA.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
