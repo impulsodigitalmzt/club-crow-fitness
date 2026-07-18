@@ -69,7 +69,7 @@ export default function MemberDashboardPage() {
       <AccountStatusCard profile={member} />
       <ClassOfDayCard dayClass={todayClass} routine={todayRoutine} />
 
-      <section className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[var(--portal-card)]">
+      <section className="overflow-hidden rounded-[1.75rem] border-2 border-white/25 bg-[var(--portal-card)]">
         <Link href="/app/tienda" className="flex items-center gap-4 p-5 active:bg-white/5">
           <span className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-[var(--portal-brand)] text-white">
             <ShoppingBag className="size-6" />

@@ -45,7 +45,7 @@ function LoginForm() {
     <div className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_30%_20%,rgba(201,54,232,.18),transparent_40%),#050505] px-5">
       <form
         onSubmit={onSubmit}
-        className="w-full max-w-md rounded-[1.75rem] border border-white/15 bg-[#111] p-8 shadow-2xl"
+        className="w-full max-w-md rounded-[1.75rem] border-2 border-white/30 bg-[#111] p-8 shadow-2xl"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.png" alt="Crow Fitness Club" className="mx-auto size-16 object-contain" />

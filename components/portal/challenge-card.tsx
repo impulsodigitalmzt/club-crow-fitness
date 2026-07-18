@@ -24,8 +24,8 @@ export function ChallengeCard({
   return (
     <article
       id={`reto-${challenge.id}`}
-      className={`overflow-hidden rounded-[1.5rem] border bg-[var(--portal-card)] ${
-        highlight ? 'border-[var(--portal-brand)]' : 'border-white/10'
+      className={`overflow-hidden rounded-[1.5rem] border-2 bg-[var(--portal-card)] ${
+        highlight ? 'border-[var(--portal-brand)]' : 'border-white/25'
       }`}
     >
       <div className="relative h-36">
@@ -39,7 +39,7 @@ export function ChallengeCard({
       </div>
 
       <div className="space-y-4 p-5">
-        <p className="text-sm leading-relaxed text-zinc-400">{challenge.description}</p>
+        <p className="text-base leading-relaxed text-zinc-300">{challenge.description}</p>
         <div className="flex items-center justify-between gap-3">
           <p className="font-display text-2xl font-black text-[var(--portal-brand-light)]">
             ${challenge.price.toLocaleString('es-MX')}

@@ -43,7 +43,7 @@ export default function MembershipsPage() {
             <MembershipCards />
           </div>
 
-          <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border border-white/15 bg-[#111] px-6 py-5 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-between gap-4 rounded-2xl border-2 border-white/30 bg-[#111] px-6 py-5 sm:flex-row">
             <div>
               <p className="text-sm font-bold text-white">¿Ya eres miembro Crow?</p>
               <p className="mt-1 text-xs text-zinc-400">
@@ -73,7 +73,7 @@ export default function MembershipsPage() {
               Pago en línea habilitado
             </p>
           </div>
-          <div className="relative overflow-hidden rounded-[2rem] border border-brand/50 bg-[#0a0a0a] shadow-[0_0_0_1px_rgba(201,54,232,0.25),0_20px_60px_rgba(201,54,232,0.2)]">
+          <div className="relative overflow-hidden rounded-[2rem] border-2 border-brand/50 bg-[#0a0a0a] shadow-[0_0_0_1px_rgba(201,54,232,0.25),0_20px_60px_rgba(201,54,232,0.2)]">
             <div className="absolute -right-10 -top-10 size-40 rounded-full bg-brand/25 blur-3xl" />
             <div className="absolute -bottom-12 -left-8 size-36 rounded-full bg-brand-dark/30 blur-3xl" />
 
@@ -99,7 +99,7 @@ export default function MembershipsPage() {
             </div>
 
             <div className="relative border-t border-white/10 bg-black/40 p-6">
-              <p className="mb-4 text-center text-xs leading-relaxed text-zinc-400">
+              <p className="mb-4 text-center text-sm leading-relaxed text-zinc-400">
                 Paga semana, quincena, tarjeta de visitas o inscripción con tarjeta, sin ir a recepción.
               </p>
               <Link
@@ -129,14 +129,14 @@ export default function MembershipsPage() {
                 ['3 amigos', '75% off'],
                 ['4 amigos', '¡Gratis!'],
               ].map(([friends, discount]) => (
-                <div key={friends} className="rounded-2xl border border-brand/25 bg-[#0b0b0b] p-5 text-center">
+                <div key={friends} className="rounded-2xl border-2 border-brand/45 bg-[#0b0b0b] p-5 text-center">
                   <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-400">{friends}</p>
                   <p className="mt-2 font-display text-2xl font-black uppercase text-brand">{discount}</p>
                 </div>
               ))}
             </div>
           </div>
-          <figure className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border border-white/10">
+          <figure className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-3xl border-2 border-white/25">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/fotos/promo-referidos.jpg" alt="Promoción de referidos Crow: descuentos por cada amigo inscrito" className="w-full" />
           </figure>

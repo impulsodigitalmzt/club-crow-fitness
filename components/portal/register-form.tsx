@@ -70,7 +70,7 @@ export function RegisterForm() {
         <PlanPicker value={selectedPlanId} onChange={setSelectedPlanId} />
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm">
+      <div className="rounded-2xl border-2 border-white/25 bg-black/40 px-4 py-3 text-sm">
         <div className="flex justify-between text-zinc-400">
           <span>Plan</span>
           <span className="text-white">${checkoutAmount.planPrice.toLocaleString('es-MX')}</span>

@@ -82,7 +82,7 @@ export default function ClassesPage() {
               { src: '/fotos/coach-sofia.jpg', name: 'Coach Sofía', role: 'HIIT · Funcional' },
               { src: '/fotos/coach-arturo.jpg', name: 'Coach Arturo', role: 'Boxeo · Acondicionamiento' },
             ].map((coach) => (
-              <figure key={coach.name} className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10">
+              <figure key={coach.name} className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/25">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={coach.src} alt={coach.name} className="absolute inset-0 size-full object-cover transition duration-700 group-hover:scale-105" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
@@ -141,7 +141,7 @@ export default function ClassesPage() {
               ))}
             </div>
 
-            <aside className="h-fit rounded-3xl border border-brand/30 bg-[#141414] p-7 lg:sticky lg:top-28">
+            <aside className="h-fit rounded-3xl border-2 border-brand/50 bg-[#141414] p-7 lg:sticky lg:top-28">
               <p className="font-mono text-[10px] font-bold uppercase tracking-widest text-brand">Reserva tu lugar</p>
               <h2 className="mt-3 font-display text-2xl font-black uppercase text-white">
                 {selectedClass ? selectedClass.name : 'Selecciona una clase'}

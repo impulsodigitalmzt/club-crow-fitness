@@ -91,7 +91,7 @@ function OrderSummary({
   isMember: boolean;
 }) {
   return (
-    <aside className="rounded-2xl border border-white/10 bg-[#121214] p-5">
+    <aside className="rounded-2xl border-2 border-white/25 bg-[#121214] p-5">
       <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-brand-light">
         Resumen del pedido
       </p>
@@ -219,7 +219,7 @@ export default function TiendaCheckoutPage() {
             ${order.total.toLocaleString('es-MX')} MXN · Tarjeta •••• {order.cardLast4}
           </p>
 
-          <div className="mt-6 space-y-3 rounded-2xl border border-white/10 bg-black/40 p-4 text-left text-sm">
+          <div className="mt-6 space-y-3 rounded-2xl border-2 border-white/25 bg-black/40 p-4 text-left text-sm">
             <p className="text-zinc-400">
               Enviamos el comprobante a{' '}
               <span className="font-semibold text-white">{order.email}</span>
@@ -229,7 +229,7 @@ export default function TiendaCheckoutPage() {
                 <MapPin className="mt-0.5 size-4 shrink-0" />
                 Recoge en {order.branchName}
               </p>
-              <p className="mt-1 pl-6 text-xs leading-relaxed text-zinc-400">
+              <p className="mt-1 pl-6 text-sm leading-relaxed text-zinc-400">
                 {order.branchAddress}
               </p>
               <p className="mt-2 pl-6 text-xs text-amber-100/70">
@@ -315,7 +315,7 @@ export default function TiendaCheckoutPage() {
                   e.preventDefault();
                   setStep(2);
                 }}
-                className="space-y-4 rounded-2xl border border-white/10 bg-[#121214] p-5 sm:p-6"
+                className="space-y-4 rounded-2xl border-2 border-white/25 bg-[#121214] p-5 sm:p-6"
               >
                 <h2 className="font-display text-xl font-black uppercase text-white">
                   Datos del comprador
@@ -365,7 +365,7 @@ export default function TiendaCheckoutPage() {
             ) : null}
 
             {step === 2 ? (
-              <div className="space-y-4 rounded-2xl border border-white/10 bg-[#121214] p-5 sm:p-6">
+              <div className="space-y-4 rounded-2xl border-2 border-white/25 bg-[#121214] p-5 sm:p-6">
                 <h2 className="font-display text-xl font-black uppercase text-white">
                   Sucursal de recolección
                 </h2>

@@ -30,7 +30,7 @@ export function CommunityImpactSection() {
             className="mt-10 max-w-xl font-display text-3xl font-black uppercase leading-tight text-white sm:text-5xl"
           />
           <FadeUp delay={0.45}>
-            <p className="mt-8 max-w-lg text-sm leading-relaxed text-zinc-400">
+            <p className="mt-8 max-w-lg text-base leading-relaxed text-zinc-400">
               La comunidad Crow también se mueve fuera del gimnasio: retos, carreras al atardecer y
               eventos que convierten el entrenamiento en estilo de vida.
             </p>

@@ -7,7 +7,7 @@ type ReelCardProps = {
 
 export function ReelCard({ src, title, subtitle, className = '' }: ReelCardProps) {
   return (
-    <figure className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0b] ${className}`}>
+    <figure className={`group relative overflow-hidden rounded-3xl border-2 border-white/25 bg-[#0b0b0b] ${className}`}>
       <video
         src={src}
         autoPlay

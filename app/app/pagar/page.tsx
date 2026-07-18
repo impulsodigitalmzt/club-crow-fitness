@@ -217,7 +217,7 @@ function PayContent() {
         </h1>
       </header>
 
-      <div className="rounded-[1.75rem] border border-white/10 bg-[var(--portal-card)] p-6">
+      <div className="rounded-[1.75rem] border-2 border-white/25 bg-[var(--portal-card)] p-6">
         <p className="text-sm text-zinc-400">Concepto</p>
         <p className="mt-1 font-display text-2xl font-black uppercase text-white">{title}</p>
         {planId ? (

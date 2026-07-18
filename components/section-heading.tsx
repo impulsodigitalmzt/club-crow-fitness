@@ -24,7 +24,7 @@ export function SectionHeading({ eyebrow, title, description, align = 'left' }: 
       />
       {description ? (
         <FadeUp delay={0.2}>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
             {description}
           </p>
         </FadeUp>

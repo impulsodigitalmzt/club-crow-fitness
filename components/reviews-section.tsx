@@ -16,8 +16,8 @@ const carouselReviews: CarouselReview[] = reviews.map((review, index) => ({
 function ReviewCard({ review, isActive }: { review: CarouselReview; isActive: boolean }) {
   return (
     <article
-      className={`flex h-[min(72vw,340px)] max-h-[360px] min-h-[260px] flex-col overflow-hidden rounded-3xl border p-6 sm:h-[300px] sm:p-7 md:h-[320px] md:p-8 ${
-        isActive ? 'border-brand/40 bg-white' : 'border-white/10 bg-white/95'
+      className={`flex h-[min(72vw,340px)] max-h-[360px] min-h-[260px] flex-col overflow-hidden rounded-3xl border-2 p-6 sm:h-[300px] sm:p-7 md:h-[320px] md:p-8 ${
+        isActive ? 'border-brand/50 bg-white' : 'border-white/30 bg-white/95'
       }`}
     >
       <div className="mb-3 flex gap-0.5 sm:mb-4">
@@ -27,7 +27,7 @@ function ReviewCard({ review, isActive }: { review: CarouselReview; isActive: bo
       </div>
 
       <figure className="flex min-h-0 flex-1 flex-col">
-        <blockquote className="relative min-h-0 flex-1 overflow-hidden pl-6 text-sm font-medium leading-relaxed text-zinc-700 sm:text-base">
+        <blockquote className="relative min-h-0 flex-1 overflow-hidden pl-6 text-base font-medium leading-relaxed text-zinc-700 sm:text-lg">
           <span aria-hidden className="absolute left-0 top-0 font-display text-4xl leading-none text-brand/40">
             “
           </span>

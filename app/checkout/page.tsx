@@ -156,18 +156,18 @@ export default function CheckoutPage() {
 
   if (completed && pass) {
     return (
-      <section className="flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_50%_20%,rgba(201,54,232,.2),transparent_35%),#050505] px-5 pb-20 pt-32">
+      <section className="min-h-screen bg-[radial-gradient(circle_at_50%_20%,rgba(201,54,232,.2),transparent_35%),#050505] px-4 pb-24 pt-28 sm:px-5 sm:pt-32">
         <PaymentConfetti />
-        <div className="w-full max-w-2xl rounded-[2rem] border border-brand/30 bg-[#0b0b0b] p-8 text-center shadow-2xl shadow-brand/10 sm:p-12">
+        <div className="mx-auto w-full max-w-2xl rounded-[1.5rem] border-2 border-brand/50 bg-[#0b0b0b] p-5 text-center shadow-2xl shadow-brand/10 sm:rounded-[2rem] sm:p-10 md:p-12">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Crow Fitness Club" className="mx-auto mb-8 size-16 object-contain" />
-          <span className="mx-auto flex size-20 items-center justify-center rounded-full bg-brand text-white">
-            <Check className="size-10 stroke-[3]" />
+          <img src="/logo.png" alt="Crow Fitness Club" className="mx-auto mb-6 size-14 object-contain sm:mb-8 sm:size-16" />
+          <span className="mx-auto flex size-16 items-center justify-center rounded-full bg-brand text-white sm:size-20">
+            <Check className="size-8 stroke-[3] sm:size-10" />
           </span>
-          <p className="mt-8 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
+          <p className="mt-6 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand sm:mt-8">
             Pago aprobado
           </p>
-          <h1 className="mt-3 font-display text-4xl font-black uppercase text-white sm:text-5xl">
+          <h1 className="mt-3 font-display text-3xl font-black uppercase leading-none text-white sm:text-4xl md:text-5xl">
             {isMember ? (
               <>
                 Membresía <span className="text-gradient-brand">renovada</span>
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
               </>
             )}
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-zinc-400">
+          <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-zinc-400">
             {isMember
               ? `Tu plan ${plan.title} quedó pagado. Presenta tu pase digital al llegar.`
               : `Tu membresía ${plan.title} quedó registrada. Presenta tu pase digital al llegar.`}
@@ -188,28 +188,28 @@ export default function CheckoutPage() {
             <DigitalPassCard pass={pass} />
           </div>
 
-          <div className="mt-6 rounded-2xl border border-white/10 bg-black p-5 text-left text-sm">
-            <div className="flex justify-between">
+          <div className="mt-6 rounded-2xl border-2 border-white/25 bg-black p-4 text-left text-sm sm:p-5">
+            <div className="flex justify-between gap-3">
               <span className="text-zinc-500">Folio</span>
-              <span className="font-mono text-white">{orderId}</span>
+              <span className="break-all font-mono text-right text-white">{orderId}</span>
             </div>
-            <div className="mt-3 flex justify-between">
+            <div className="mt-3 flex justify-between gap-3">
               <span className="text-zinc-500">Vigencia</span>
               <span className="font-bold text-brand-light">Hasta {pass.expiresAt}</span>
             </div>
-            <div className="mt-3 flex justify-between border-t border-white/10 pt-3">
+            <div className="mt-3 flex justify-between gap-3 border-t border-white/10 pt-3">
               <span className="font-bold text-white">Total pagado</span>
-              <span className="font-display text-2xl font-black text-brand">
+              <span className="font-display text-xl font-black text-brand sm:text-2xl">
                 ${total.toLocaleString('es-MX')} MXN
               </span>
             </div>
           </div>
 
-          <div className="mt-5 rounded-2xl border border-white/10 bg-[#111] p-5 text-left" aria-live="polite">
+          <div className="mt-5 rounded-2xl border-2 border-white/25 bg-[#111] p-4 text-left sm:p-5" aria-live="polite">
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-brand">
               Envío de tarjeta digital
             </p>
-            <p className="mt-2 text-xs leading-relaxed text-zinc-400">
+            <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               {notificationStatus === 'sent'
                 ? 'Tu tarjeta digital ya fue enviada por WhatsApp y correo electrónico.'
                 : 'Estamos enviando tu tarjeta digital por WhatsApp y correo electrónico...'}
@@ -260,7 +260,7 @@ export default function CheckoutPage() {
         </Link>
 
         <div className="mt-8 grid gap-8 lg:grid-cols-[1.15fr_.85fr] lg:items-start">
-          <form onSubmit={submitPayment} autoComplete="off" className="rounded-[2rem] border border-white/20 bg-[#141414] p-7 sm:p-10">
+          <form onSubmit={submitPayment} autoComplete="off" className="rounded-[2rem] border-2 border-white/30 bg-[#141414] p-7 sm:p-10">
             <div className="flex items-center justify-between border-b border-white/10 pb-7">
               <div>
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
@@ -275,7 +275,7 @@ export default function CheckoutPage() {
               </span>
             </div>
 
-            <div className="mt-7 grid grid-cols-2 gap-2 rounded-2xl border border-white/10 bg-black/40 p-1.5">
+            <div className="mt-7 grid grid-cols-2 gap-2 rounded-2xl border-2 border-white/25 bg-black/40 p-1.5">
               <button
                 type="button"
                 onClick={() => setPayerType('nuevo')}
@@ -352,7 +352,7 @@ export default function CheckoutPage() {
 
             <fieldset className="mt-10 border-t border-white/10 pt-8">
               <legend className="mb-5 text-sm font-bold text-white">3. Tarjeta de crédito o débito</legend>
-              <div className="rounded-2xl border border-white/15 bg-[#151515] p-5">
+              <div className="rounded-2xl border-2 border-white/30 bg-[#151515] p-5">
                 <label className="block">
                   <span className="mb-2 flex items-center justify-between text-xs font-semibold text-zinc-300">
                     Número de tarjeta
@@ -433,7 +433,7 @@ export default function CheckoutPage() {
             </p>
           </form>
 
-          <aside className="rounded-[2rem] border border-brand/30 bg-[#141414] p-7 sm:p-9 lg:sticky lg:top-28">
+          <aside className="rounded-[2rem] border-2 border-brand/50 bg-[#141414] p-7 sm:p-9 lg:sticky lg:top-28">
             <div className="flex items-center justify-between">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
                 Resumen de compra

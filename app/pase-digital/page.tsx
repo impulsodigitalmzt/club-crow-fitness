@@ -55,10 +55,10 @@ export default function DigitalPassPage() {
 
       <section id="crear-pase" className="bg-black py-24">
         <div className="mx-auto grid max-w-[1200px] gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:items-center">
-          <form onSubmit={createPass} className="rounded-3xl border border-white/20 bg-[#141414] p-7 sm:p-9">
+          <form onSubmit={createPass} className="rounded-3xl border-2 border-white/30 bg-[#141414] p-7 sm:p-9">
             <CreditCard className="size-7 text-brand" />
             <h2 className="mt-5 font-display text-3xl font-black uppercase text-white">Datos de miembro</h2>
-            <p className="mt-3 text-sm leading-relaxed text-zinc-500">
+            <p className="mt-3 text-base leading-relaxed text-zinc-500">
               Completa tus datos para generar tu credencial de acceso personalizada.
             </p>
             <div className="mt-8 space-y-5">

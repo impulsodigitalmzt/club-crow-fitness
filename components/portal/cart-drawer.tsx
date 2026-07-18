@@ -36,7 +36,7 @@ export function CartDrawer() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="cart-title"
-        className="relative z-10 flex max-h-[88dvh] w-full max-w-lg flex-col rounded-t-[1.75rem] border border-white/10 bg-[#121214] text-white shadow-2xl sm:mx-4 sm:rounded-[1.75rem]"
+        className="relative z-10 flex max-h-[88dvh] w-full max-w-lg flex-col rounded-t-[1.75rem] border-2 border-white/25 bg-[#121214] text-white shadow-2xl sm:mx-4 sm:rounded-[1.75rem]"
       >
         <header className="flex items-center justify-between border-b border-white/10 px-5 py-4">
           <div>
@@ -75,7 +75,7 @@ export function CartDrawer() {
               {items.map((item) => (
                 <div
                   key={item.productId}
-                  className="flex gap-3 rounded-2xl border border-white/10 bg-black/40 p-3"
+                  className="flex gap-3 rounded-2xl border-2 border-white/25 bg-black/40 p-3"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

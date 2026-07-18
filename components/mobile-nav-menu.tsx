@@ -113,7 +113,7 @@ export function MobileNavMenu({
             <p className="mt-1 font-display text-2xl font-black uppercase leading-none">
               Entrena con garra
             </p>
-            <p className="mt-2 max-w-[18rem] text-xs leading-relaxed text-zinc-200">
+            <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-zinc-200">
               Planes claros, acceso a sucursales y comunidad que te empuja a avanzar.
             </p>
             <span className="mt-3 inline-flex items-center gap-1 text-xs font-bold text-brand-light">

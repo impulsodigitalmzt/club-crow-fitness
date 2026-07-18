@@ -130,7 +130,7 @@ export default function GymPage() {
             {gallery.map((photo) => (
               <figure
                 key={photo.src}
-                className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-zinc-900"
+                className="group relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-white/25 bg-zinc-900"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -145,7 +145,7 @@ export default function GymPage() {
                     {photo.tag}
                   </p>
                   <h3 className="font-display text-xl font-black uppercase leading-tight text-white">{photo.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-300">{photo.copy}</p>
+                  <p className="mt-2 text-base leading-relaxed text-zinc-300">{photo.copy}</p>
                 </figcaption>
               </figure>
             ))}
@@ -155,12 +155,12 @@ export default function GymPage() {
 
       <section className="border-t border-white/10 bg-[#090909] py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
-          <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-px overflow-hidden rounded-3xl border-2 border-white/25 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
             {amenities.map((item) => (
               <article key={item.title} className="bg-[#090909] p-8">
                 <item.icon className="size-6 text-brand" />
                 <h3 className="mt-8 font-display text-xl font-black uppercase text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-500">{item.copy}</p>
+                <p className="mt-3 text-base leading-relaxed text-zinc-500">{item.copy}</p>
               </article>
             ))}
           </div>

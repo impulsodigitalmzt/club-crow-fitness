@@ -5,7 +5,7 @@ import { NO_DELIVERY_LEGEND, pickupBranches } from '@/lib/portal/store-data';
 export function ShopPickupNotice({ compact = false }: { compact?: boolean }) {
   return (
     <aside
-      className={`rounded-2xl border border-amber-500/35 bg-amber-500/10 ${
+      className={`rounded-2xl border-2 border-amber-500/50 bg-amber-500/10 ${
         compact ? 'px-4 py-3' : 'px-5 py-4'
       }`}
       role="note"
@@ -18,7 +18,7 @@ export function ShopPickupNotice({ compact = false }: { compact?: boolean }) {
           <p className="text-xs font-black uppercase tracking-wider text-amber-200">
             Sin servicio a domicilio
           </p>
-          <p className={`mt-1 leading-relaxed text-amber-100/90 ${compact ? 'text-xs' : 'text-sm'}`}>
+          <p className={`mt-1 leading-relaxed text-amber-100/90 ${compact ? 'text-sm' : 'text-base'}`}>
             {NO_DELIVERY_LEGEND}
           </p>
           {!compact ? (

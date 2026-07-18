@@ -51,12 +51,12 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <form onSubmit={submitContact} className="rounded-3xl border border-brand/30 bg-[#141414] p-7 sm:p-10">
+          <form onSubmit={submitContact} className="rounded-3xl border-2 border-brand/50 bg-[#141414] p-7 sm:p-10">
             {submitted ? (
               <div className="flex min-h-[520px] flex-col items-center justify-center text-center">
                 <span className="flex size-16 items-center justify-center rounded-full bg-brand/15 text-brand"><Check className="size-8" /></span>
                 <h2 className="mt-6 font-display text-3xl font-black uppercase text-white">Solicitud recibida</h2>
-                <p className="mt-3 max-w-sm text-sm leading-relaxed text-zinc-400">Gracias por contactarnos. Uno de nuestros asesores revisará tus datos y continuará contigo.</p>
+                <p className="mt-3 max-w-sm text-base leading-relaxed text-zinc-400">Gracias por contactarnos. Uno de nuestros asesores revisará tus datos y continuará contigo.</p>
                 <button type="button" onClick={() => setSubmitted(false)} className="mt-7 rounded-full border border-white/15 px-6 py-3 text-xs font-bold text-white hover:border-brand">Enviar otra consulta</button>
               </div>
             ) : (
@@ -106,7 +106,7 @@ export default function ContactPage() {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {/* Sucursal El Toreo */}
-            <article className="overflow-hidden rounded-[2rem] border border-white/10 bg-black">
+            <article className="overflow-hidden rounded-[2rem] border-2 border-white/25 bg-black">
               <div className="overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.8807289422825!2d-106.4389001!3d23.2474269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869f53006009ac9d%3A0xcdbe24509e2288ca!2sCrow%20Fitness%20Club!5e0!3m2!1ses-419!2smx!4v1784277478352!5m2!1ses-419!2smx"
@@ -120,16 +120,16 @@ export default function ContactPage() {
               <div className="p-6 sm:p-7">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">Sucursal 01</p>
                 <h3 className="mt-2 font-display text-2xl font-black uppercase text-white">El Toreo</h3>
-                <p className="mt-3 flex gap-3 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-3 flex gap-3 text-base leading-relaxed text-zinc-400">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
                   Silverio Pérez, Ponciano Díaz 132, El Toreo, 82120 Mazatlán, Sin.
                 </p>
                 <div className="mt-5 grid grid-cols-2 gap-3">
-                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white/25">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/fotos/gym1.JPG" alt="Fachada Crow El Toreo" className="absolute inset-0 size-full object-cover" />
                   </figure>
-                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10">
+                  <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border-2 border-white/25">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src="/fotos/gym.JPG" alt="Crow El Toreo de noche" className="absolute inset-0 size-full object-cover" />
                   </figure>
@@ -146,7 +146,7 @@ export default function ContactPage() {
             </article>
 
             {/* Sucursal Real del Valle */}
-            <article className="overflow-hidden rounded-[2rem] border border-brand/30 bg-black shadow-[0_0_40px_rgba(201,54,232,0.12)]">
+            <article className="overflow-hidden rounded-[2rem] border-2 border-brand/50 bg-black shadow-[0_0_40px_rgba(201,54,232,0.12)]">
               <figure className="relative aspect-[16/10] overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -161,11 +161,11 @@ export default function ContactPage() {
                 </figcaption>
               </figure>
               <div className="p-6 sm:p-7">
-                <p className="flex gap-3 text-sm leading-relaxed text-zinc-400">
+                <p className="flex gap-3 text-base leading-relaxed text-zinc-400">
                   <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
                   Av. Paseo del Atlántico 4214, Real del Valle, 82124 Mazatlán, Sin.
                 </p>
-                <div className="mt-5 overflow-hidden rounded-2xl border border-white/10">
+                <div className="mt-5 overflow-hidden rounded-2xl border-2 border-white/25">
                   <iframe
                     src="https://maps.google.com/maps?q=Av.+Paseo+del+Atl%C3%A1ntico+4214,+Real+del+Valle,+82124+Mazatl%C3%A1n,+Sin.&z=16&output=embed"
                     title="Crow Fitness Club · Sucursal Real del Valle"
@@ -191,7 +191,7 @@ export default function ContactPage() {
 
       {panel && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm" onMouseDown={() => setPanel(null)}>
-          <div className="w-full max-w-md overflow-hidden rounded-3xl border border-white/15 bg-[#101010] shadow-2xl" onMouseDown={(event) => event.stopPropagation()}>
+          <div className="w-full max-w-md overflow-hidden rounded-3xl border-2 border-white/30 bg-[#101010] shadow-2xl" onMouseDown={(event) => event.stopPropagation()}>
             {panel === 'chat' && (
               <>
                 <div className="flex items-center justify-between bg-[#075e54] px-5 py-4">
@@ -260,7 +260,7 @@ export default function ContactPage() {
 }
 
 function ContactItem({ icon: Icon, title, text, onClick }: { icon: typeof Phone; title: string; text: string; onClick?: () => void }) {
-  const className = 'flex w-full gap-4 rounded-2xl border border-white/10 p-5 text-left transition-colors hover:border-brand/30';
+  const className = 'flex w-full gap-4 rounded-2xl border-2 border-white/25 p-5 text-left transition-colors hover:border-brand/30';
   const content = <>
     <Icon className="size-5 shrink-0 text-brand" />
     <span><span className="block text-xs font-bold uppercase tracking-wider text-white">{title}</span><span className="mt-1 block text-sm text-zinc-400">{text}</span></span>

@@ -3,28 +3,32 @@ import type { DigitalPass } from '@/lib/digital-pass';
 
 export function DigitalPassCard({ pass }: { pass: DigitalPass }) {
   return (
-    <div className="relative mx-auto aspect-[1.58/1] w-full max-w-xl overflow-hidden rounded-[2rem] border border-brand/40 bg-[radial-gradient(circle_at_90%_10%,rgba(201,54,232,.45),transparent_35%),linear-gradient(135deg,#171717,#050505)] p-7 shadow-2xl shadow-brand/15 sm:p-10">
-      <div className="flex items-start justify-between">
-        <div className="flex items-center gap-3">
+    <div className="relative mx-auto w-full max-w-xl overflow-hidden rounded-[1.5rem] border-2 border-brand/55 bg-[radial-gradient(circle_at_90%_10%,rgba(201,54,232,.45),transparent_35%),linear-gradient(135deg,#171717,#050505)] p-5 shadow-2xl shadow-brand/15 sm:rounded-[2rem] sm:p-8">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-2.5 sm:gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="" className="size-12 object-contain" />
-          <div>
-            <p className="font-display text-xl font-black text-white">
+          <img src="/logo.png" alt="" className="size-9 shrink-0 object-contain sm:size-12" />
+          <div className="min-w-0">
+            <p className="font-display text-base font-black leading-none text-white sm:text-xl">
               CROW <span className="text-brand">FITNESS</span>
             </p>
-            <p className="mt-1 font-mono text-[8px] uppercase tracking-[0.3em] text-zinc-500">
+            <p className="mt-1.5 font-mono text-[7px] uppercase tracking-[0.22em] text-zinc-500 sm:text-[8px] sm:tracking-[0.3em]">
               Digital member pass
             </p>
           </div>
         </div>
-        <QrCode className="size-12 text-white" />
+        <QrCode className="size-9 shrink-0 text-white sm:size-12" aria-hidden />
       </div>
 
-      <div className="absolute inset-x-7 bottom-7 sm:inset-x-10 sm:bottom-10">
-        <p className="font-display text-2xl font-black uppercase text-white sm:text-4xl">{pass.name}</p>
-        <p className="mt-2 text-xs font-bold uppercase tracking-wider text-brand">{pass.plan}</p>
-        <div className="mt-6 flex flex-wrap justify-between gap-3 border-t border-white/15 pt-4 font-mono text-[10px] text-zinc-400">
-          <span>{pass.memberId}</span>
+      <div className="mt-8 sm:mt-12">
+        <p className="break-words font-display text-xl font-black uppercase leading-tight text-white sm:text-3xl md:text-4xl">
+          {pass.name}
+        </p>
+        <p className="mt-2 text-[11px] font-bold uppercase tracking-wider text-brand sm:text-xs">
+          {pass.plan}
+        </p>
+        <div className="mt-5 flex flex-wrap items-end justify-between gap-2 border-t border-white/15 pt-3 font-mono text-[9px] text-zinc-400 sm:mt-6 sm:gap-3 sm:pt-4 sm:text-[10px]">
+          <span className="break-all">{pass.memberId}</span>
           <span className="text-brand-light">VENCE {pass.expiresAt}</span>
         </div>
       </div>

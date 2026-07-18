@@ -85,7 +85,7 @@ export default function TiendaPage() {
               productos.
             </div>
           ) : (
-            <div className="mb-8 rounded-2xl border border-white/10 bg-[#111] px-5 py-4 text-sm text-zinc-400">
+            <div className="mb-8 rounded-2xl border-2 border-white/25 bg-[#111] px-5 py-4 text-sm text-zinc-400">
               ¿Eres miembro?{' '}
               <Link href="/app/login?next=/tienda" className="font-bold text-brand-light underline">
                 Inicia sesión

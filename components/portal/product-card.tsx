@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: ShopProduct }) {
   }
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#121214]">
+    <article className="flex flex-col overflow-hidden rounded-2xl border-2 border-white/25 bg-[#121214]">
       <div className="relative aspect-square bg-[#f3f3f3]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -39,7 +39,7 @@ export function ProductCard({ product }: { product: ShopProduct }) {
         <h3 className="font-display text-lg font-black uppercase leading-snug text-white">
           {product.name}
         </h3>
-        <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-zinc-400">
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-zinc-300">
           {product.description}
         </p>
         <div className="mt-3 flex items-baseline gap-2">

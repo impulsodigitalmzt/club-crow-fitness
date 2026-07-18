@@ -27,7 +27,7 @@ export function AccountStatusCard({ profile }: { profile: MemberProfile }) {
   const StatusIcon = active ? CheckCircle2 : pending ? Clock3 : AlertTriangle;
 
   return (
-    <section className="overflow-hidden rounded-[1.75rem] border border-[var(--portal-border)] bg-[var(--portal-card)]">
+    <section className="overflow-hidden rounded-[1.75rem] border-2 border-[var(--portal-border)] bg-[var(--portal-card)]">
       <div
         className={`px-5 py-4 ${
           active

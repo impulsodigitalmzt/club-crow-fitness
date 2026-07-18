@@ -30,7 +30,7 @@ export function TransformationsCarousel() {
         {loop.map((src, index) => (
           <figure
             key={`${src}-${index}`}
-            className="relative mr-4 aspect-square w-[260px] shrink-0 overflow-hidden rounded-3xl border border-white/10 sm:w-[320px]"
+            className="relative mr-4 aspect-square w-[260px] shrink-0 overflow-hidden rounded-3xl border-2 border-white/25 sm:w-[320px]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

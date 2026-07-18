@@ -11,7 +11,7 @@ export function ClassOfDayCard({
   const wod = dayClass.wod ?? routine.blocks.find((b) => b.label === 'WOD')?.detail;
 
   return (
-    <section className="overflow-hidden rounded-[1.75rem] border border-[var(--portal-border)] bg-[var(--portal-card)]">
+    <section className="overflow-hidden rounded-[1.75rem] border-2 border-[var(--portal-border)] bg-[var(--portal-card)]">
       <div className="border-b border-white/10 px-5 py-4">
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--portal-brand-light)]">
           Hoy en Crow
@@ -20,11 +20,11 @@ export function ClassOfDayCard({
       </div>
 
       <div className="space-y-4 p-5">
-        <div className="rounded-2xl border border-[var(--portal-brand)]/30 bg-[var(--portal-brand)]/10 p-4">
+        <div className="rounded-2xl border-2 border-[var(--portal-brand)]/40 bg-[var(--portal-brand)]/10 p-4">
           <div className="flex items-center justify-between gap-3">
             <div>
               <p className="font-display text-2xl font-black uppercase text-white">{dayClass.name}</p>
-              <p className="mt-1 text-sm text-zinc-400">
+              <p className="mt-1 text-base text-zinc-300">
                 {dayClass.coach} · {dayClass.room}
               </p>
             </div>
@@ -41,12 +41,12 @@ export function ClassOfDayCard({
         </div>
 
         {wod ? (
-          <div className="rounded-2xl border border-white/10 bg-black/50 p-4">
+          <div className="rounded-2xl border-2 border-white/25 bg-black/50 p-4">
             <div className="mb-2 flex items-center gap-2">
               <Flame className="size-4 text-[var(--portal-brand)]" />
               <h3 className="text-xs font-bold uppercase tracking-wider text-white">WOD</h3>
             </div>
-            <p className="text-sm font-semibold leading-relaxed text-[var(--portal-brand-light)]">
+            <p className="text-base font-semibold leading-relaxed text-[var(--portal-brand-light)]">
               {wod}
             </p>
           </div>
@@ -59,17 +59,17 @@ export function ClassOfDayCard({
               {routine.title}
             </h3>
           </div>
-          <p className="mb-3 text-xs text-zinc-500">{routine.focus}</p>
+          <p className="mb-3 text-sm text-zinc-400">{routine.focus}</p>
           <ul className="space-y-2">
             {routine.blocks.map((block) => (
               <li
                 key={block.label}
-                className="flex gap-3 rounded-xl border border-white/10 bg-black/40 px-3 py-3"
+                className="flex gap-3 rounded-xl border-2 border-white/25 bg-black/40 px-3 py-3"
               >
                 <span className="mt-0.5 size-1.5 shrink-0 rounded-full bg-[var(--portal-brand)]" />
                 <div>
                   <p className="text-xs font-bold uppercase text-white">{block.label}</p>
-                  <p className="mt-0.5 text-sm text-zinc-400">{block.detail}</p>
+                  <p className="mt-0.5 text-base text-zinc-300">{block.detail}</p>
                 </div>
               </li>
             ))}

@@ -120,7 +120,7 @@ export default function CoachAiPage() {
             <h2 className="mt-4 whitespace-pre-line font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.035em] text-white sm:text-6xl">
               LLEGAS Y YA SABES{'\n'}<span className="text-gradient-brand">QUÉ HACER.</span>
             </h2>
-            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-zinc-300 sm:text-lg">
               Crow combina entrenamiento funcional, fuerza y cardio. Desde que llegas tienes una rutina diaria y el acompañamiento del instructor en turno, todo incluido en tu mensualidad.
             </p>
           </div>
@@ -131,24 +131,24 @@ export default function CoachAiPage() {
               ['02', 'Rutina diaria incluida', 'No necesitas improvisar: cada día encuentras una estructura de entrenamiento preparada.'],
               ['03', 'Instructor en turno', 'Recibes orientación en piso para ejecutar los ejercicios y resolver tus dudas.'],
             ].map(([number, title, copy]) => (
-              <article key={number} className="rounded-3xl border border-white/10 bg-[#0b0b0b] p-7">
+              <article key={number} className="rounded-3xl border-2 border-white/25 bg-[#0b0b0b] p-7">
                 <p className="font-mono text-[10px] font-bold tracking-[0.2em] text-brand">{number}</p>
                 <h3 className="mt-5 font-display text-xl font-black uppercase text-white">{title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-500">{copy}</p>
+                <p className="mt-3 text-base leading-relaxed text-zinc-500">{copy}</p>
               </article>
             ))}
           </div>
 
-          <div className="mt-16 rounded-3xl border border-brand/25 bg-[radial-gradient(circle_at_0%_0%,rgba(201,54,232,.18),transparent_35%),#0b0b0b] p-7 sm:p-9">
+          <div className="mt-16 rounded-3xl border-2 border-brand/45 bg-[radial-gradient(circle_at_0%_0%,rgba(201,54,232,.18),transparent_35%),#0b0b0b] p-7 sm:p-9">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">Para quienes siguen su propio plan</p>
             <h2 className="mt-3 font-display text-3xl font-black uppercase text-white">Crow Coach IA es una opción adicional</h2>
-            <p className="mt-3 max-w-3xl text-sm leading-relaxed text-zinc-400">
+            <p className="mt-3 max-w-3xl text-base leading-relaxed text-zinc-400">
               Si no sigues la rutina grupal y prefieres entrenar de forma independiente, configura una base según tu objetivo, nivel y equipo disponible. Revísala con un instructor antes de aumentar cargas o cambiar ejercicios.
             </p>
           </div>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[.75fr_1.25fr]">
-          <div className="h-fit rounded-3xl border border-brand/30 bg-[#141414] p-7 sm:p-9">
+          <div className="h-fit rounded-3xl border-2 border-brand/50 bg-[#141414] p-7 sm:p-9">
             <div className="flex items-center gap-3">
               <span className="rounded-xl bg-brand/15 p-3 text-brand"><Bot className="size-6" /></span>
               <div>
@@ -175,7 +175,7 @@ export default function CoachAiPage() {
             </button>
           </div>
 
-          <div className="min-h-[620px] rounded-3xl border border-white/10 bg-[#080808] p-7 sm:p-10">
+          <div className="min-h-[620px] rounded-3xl border-2 border-white/25 bg-[#080808] p-7 sm:p-10">
             {routine ? (
               <div>
                 <div className="flex flex-col gap-5 border-b border-white/10 pb-7 sm:flex-row sm:items-start sm:justify-between">
@@ -184,7 +184,7 @@ export default function CoachAiPage() {
                       <CheckCircle2 className="size-4" /> Rutina alternativa lista
                     </div>
                     <h2 className="mt-3 font-display text-3xl font-black uppercase text-white">{routine.title}</h2>
-                    <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400">{routine.summary}</p>
+                    <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-400">{routine.summary}</p>
                   </div>
                   <button type="button" onClick={generateRoutine} className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-[10px] font-bold uppercase tracking-wider text-white hover:border-brand hover:text-brand">
                     <RotateCcw className="size-3.5" /> Recalcular
@@ -193,7 +193,7 @@ export default function CoachAiPage() {
 
                 <div className="mt-7 grid gap-4 xl:grid-cols-2">
                   {routine.days.map((day) => (
-                    <article key={day.name} className="rounded-2xl border border-white/10 bg-[#0d0d0d] p-5">
+                    <article key={day.name} className="rounded-2xl border-2 border-white/25 bg-[#0d0d0d] p-5">
                       <div className="flex items-start justify-between gap-4">
                         <div>
                           <p className="font-mono text-[9px] font-bold uppercase tracking-widest text-brand">{day.name}</p>
@@ -203,7 +203,7 @@ export default function CoachAiPage() {
                       </div>
                       <ul className="mt-5 space-y-3">
                         {day.exercises.map((exercise) => (
-                          <li key={exercise} className="flex gap-3 text-xs leading-relaxed text-zinc-300">
+                          <li key={exercise} className="flex gap-3 text-sm leading-relaxed text-zinc-200 sm:text-base">
                             <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-brand" />
                             {exercise}
                           </li>
@@ -214,13 +214,13 @@ export default function CoachAiPage() {
                 </div>
 
                 <div className="mt-5 grid gap-4 md:grid-cols-2">
-                  <div className="rounded-2xl border border-brand/20 bg-brand/5 p-5">
+                  <div className="rounded-2xl border-2 border-brand/40 bg-brand/5 p-5">
                     <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white"><Clock3 className="size-4 text-brand" /> Descansos</p>
-                    <p className="mt-3 text-xs leading-relaxed text-zinc-400">{routine.rest}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-300 sm:text-base">{routine.rest}</p>
                   </div>
-                  <div className="rounded-2xl border border-brand/20 bg-brand/5 p-5">
+                  <div className="rounded-2xl border-2 border-brand/40 bg-brand/5 p-5">
                     <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white"><Sparkles className="size-4 text-brand" /> Progresión</p>
-                    <p className="mt-3 text-xs leading-relaxed text-zinc-400">{routine.progression}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-zinc-300 sm:text-base">{routine.progression}</p>
                   </div>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function CoachAiPage() {
                   <Loader2 className="size-9 animate-spin text-brand" />
                 </span>
                 <h2 className="mt-7 font-display text-3xl font-black uppercase text-white">Diseñando tu plan</h2>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-zinc-500">Analizando objetivo, experiencia, frecuencia semanal y equipo disponible...</p>
+                <p className="mt-3 max-w-md text-base leading-relaxed text-zinc-500">Analizando objetivo, experiencia, frecuencia semanal y equipo disponible...</p>
                 <div className="mt-7 h-1.5 w-full max-w-xs overflow-hidden rounded-full bg-white/5">
                   <div className="h-full w-2/3 animate-pulse rounded-full bg-brand" />
                 </div>
@@ -240,7 +240,7 @@ export default function CoachAiPage() {
               <div className="flex min-h-[540px] flex-col items-center justify-center text-center">
                 <Sparkles className="size-10 text-brand" />
                 <h2 className="mt-6 font-display text-3xl font-black uppercase text-white">Tu alternativa aparecerá aquí</h2>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-zinc-500">Esta herramienta es para quienes prefieren seguir una rutina propia. La rutina diaria del sistema Crow ya está incluida en tu mensualidad.</p>
+                <p className="mt-3 max-w-md text-base leading-relaxed text-zinc-500">Esta herramienta es para quienes prefieren seguir una rutina propia. La rutina diaria del sistema Crow ya está incluida en tu mensualidad.</p>
               </div>
             )}
           </div>
@@ -255,10 +255,10 @@ export default function CoachAiPage() {
             <h2 className="mt-4 whitespace-pre-line font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.035em] text-white sm:text-6xl">
               LA IA COMPLEMENTA.{'\n'}<span className="text-gradient-brand">EL COACH ACOMPAÑA.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
               El generador no sustituye el sistema diario de Crow ni la atención en piso. Es una herramienta adicional para miembros que entrenan con su propio plan; un instructor puede ayudarte a validar ejercicios, técnica y cargas.
             </p>
-            <ul className="mt-8 space-y-3 text-sm text-zinc-300">
+            <ul className="mt-8 space-y-3 text-base text-zinc-300">
               <li className="flex gap-3"><ClipboardCheck className="size-5 shrink-0 text-brand" /> Rutina diaria híbrida incluida en tu mensualidad</li>
               <li className="flex gap-3"><ClipboardCheck className="size-5 shrink-0 text-brand" /> Atención del instructor en turno</li>
               <li className="flex gap-3"><ClipboardCheck className="size-5 shrink-0 text-brand" /> Flexibilidad para seguir una rutina propia</li>
