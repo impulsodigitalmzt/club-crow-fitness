@@ -32,7 +32,7 @@ export default function TiendaPage() {
       <PageHero
         eyebrow="Tienda Crow"
         title={'MERCH & GEAR.\n*COMPRA EN LÍNEA.*'}
-        description="Playeras, shorts, gorras, shakers, toallas y Crow Whey. Paga en línea y recoge en El Toreo o Real del Valle. Socios Crow: 10% de descuento."
+        description="Merch oficial Crow: playeras, shorts, gorras, shakers y suplementos con materiales resistentes, acabados premium y el branding del club. Diseñados para entrenar duro y verse bien dentro y fuera del gym."
         image="/fotos/tienda/Gemini_Generated_Image_be0h4obe0h4obe0h.png"
         imagePosition="center"
         primaryHref="#catalogo"
