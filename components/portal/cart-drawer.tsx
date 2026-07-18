@@ -160,7 +160,7 @@ export function CartDrawer() {
               onClick={() => setOpen(false)}
               className="flex min-h-14 w-full items-center justify-center rounded-2xl bg-brand text-sm font-black uppercase tracking-wider text-white hover:bg-brand-dark"
             >
-              Pagar en línea
+              Proceder al pago
             </Link>
           </footer>
         ) : null}

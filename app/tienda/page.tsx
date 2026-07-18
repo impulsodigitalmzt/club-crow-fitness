@@ -32,9 +32,8 @@ export default function TiendaPage() {
       <PageHero
         eyebrow="Tienda Crow"
         title={'MERCH & GEAR.\n*COMPRA EN LÍNEA.*'}
-        description="Merch oficial Crow: playeras, shorts, gorras, shakers y suplementos con materiales resistentes, acabados premium y el branding del club. Diseñados para entrenar duro y verse bien dentro y fuera del gym."
-        image="/fotos/tienda/Gemini_Generated_Image_be0h4obe0h4obe0h.png"
-        imagePosition="center"
+        description="Cualquiera puede comprar. Si eres socio Crow, tienes 10% de descuento automático. Pagas en línea y recoges en sucursal."
+        image="/fotos/comunidad-mujeres.jpg"
         primaryHref="#catalogo"
         primaryLabel="Ver productos"
       />

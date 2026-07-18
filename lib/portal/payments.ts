@@ -53,13 +53,7 @@ export function buildChallengeCheckoutUrl(challengeId: string, amount: number) {
   return `/app/pagar?${params.toString()}`;
 }
 
-/** Checkout público de la Tienda Crow (sin exigir membresía). */
-export function buildShopCheckoutUrl(amount: number, itemCount = 1, memberDiscount = false) {
-  const params = new URLSearchParams({
-    concepto: 'tienda',
-    monto: String(amount),
-    titulo: itemCount === 1 ? 'Pedido Tienda Crow' : `Pedido (${itemCount} artículos)`,
-  });
-  if (memberDiscount) params.set('socio', '1');
-  return `/tienda/pagar?${params.toString()}`;
+/** Checkout completo de la Tienda Crow (carrito → datos → pasarela). */
+export function buildShopCheckoutUrl(_amount?: number, _itemCount?: number, _memberDiscount?: boolean) {
+  return `/tienda/checkout`;
 }
