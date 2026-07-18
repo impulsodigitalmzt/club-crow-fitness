@@ -1,6 +1,7 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Outfit, JetBrains_Mono } from 'next/font/google';
 import { SiteChrome } from '@/components/site-chrome';
+import { PwaRegister } from '@/components/pwa-register';
 import './globals.css';
 
 const inter = Inter({
@@ -22,16 +23,41 @@ export const metadata: Metadata = {
   title: 'Crow Fitness Club | Gimnasio Premium 24/7 en Mazatlán',
   description:
     'Entrena en Crow Fitness Club Mazatlán: equipo de alto nivel, clases, coaching y una comunidad que se mueve contigo.',
-  icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+  applicationName: 'Crow Fitness Club',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Crow Fitness',
   },
+  formatDetection: {
+    telephone: true,
+  },
+  icons: {
+    icon: [
+      { url: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/logo.png', type: 'image/png' },
+    ],
+    apple: [{ url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: '/logo.png',
+  },
+  manifest: '/manifest.webmanifest',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#C936E8',
+  colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable}`}>
       <body suppressHydrationWarning className="bg-[#050505] text-[#f4f4f5] antialiased">
+        <PwaRegister />
         <SiteChrome>{children}</SiteChrome>
       </body>
     </html>

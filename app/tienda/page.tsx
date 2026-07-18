@@ -82,7 +82,7 @@ export default function TiendaPage() {
             <div className="mb-8 rounded-2xl border-[3px] border-zinc-500 bg-zinc-900 px-5 py-4 text-sm text-zinc-400">
               ¿Eres miembro?{' '}
               <Link href="/app/login?next=/tienda" className="font-bold text-brand-light underline">
-                Inicia sesión
+                Iniciar socio
               </Link>{' '}
               y obtén {Math.round(MEMBER_SHOP_DISCOUNT * 100)}% de descuento en toda la tienda.
             </div>
@@ -95,23 +95,6 @@ export default function TiendaPage() {
           </div>
         </div>
       </section>
-
-      {count > 0 ? (
-        <div className="fixed inset-x-0 bottom-4 z-40 px-4 lg:hidden">
-          <Link
-            href="/tienda/carrito"
-            className="mx-auto flex w-full max-w-lg min-h-14 items-center justify-between rounded-2xl border-[3px] border-zinc-500 bg-black/95 px-5 text-white shadow-2xl backdrop-blur-xl"
-          >
-            <span className="text-xs font-bold uppercase tracking-wider text-zinc-400">
-              {count} en carrito
-            </span>
-            <span className="font-display text-lg font-black">${total.toLocaleString('es-MX')}</span>
-            <span className="rounded-xl bg-brand px-4 py-2 text-[10px] font-black uppercase tracking-wider">
-              Ver carrito
-            </span>
-          </Link>
-        </div>
-      ) : null}
 
       <ContactCta />
     </>

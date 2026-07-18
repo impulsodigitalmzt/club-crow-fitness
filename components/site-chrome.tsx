@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { CartProvider } from '@/components/portal/cart-context';
-import { CartDrawer, CartHeaderButton } from '@/components/portal/cart-drawer';
+import { CartHeaderButton } from '@/components/portal/cart-header-button';
 
 /**
  * Muestra el chrome de la landing solo fuera de /admin y /login,
@@ -30,7 +30,6 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         <SiteHeader cartSlot={<CartHeaderButton />} />
         <main>{children}</main>
         <SiteFooter />
-        <CartDrawer />
       </CartProvider>
     );
   }

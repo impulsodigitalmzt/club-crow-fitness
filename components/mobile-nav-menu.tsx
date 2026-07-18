@@ -192,15 +192,18 @@ export function MobileNavMenu({
         </div>
       </div>
 
-      {/* Acciones inferiores */}
+      {/* Acciones inferiores — opcionales; el menú de arriba es público para todos */}
       <div className="shrink-0 bg-[#F4F1EC] px-5 pb-[max(1.1rem,env(safe-area-inset-bottom))] pt-2">
         <div className="flex gap-2.5">
           <Link
             href={memberHref}
             onClick={onClose}
-            className="flex min-h-12 flex-1 items-center justify-center rounded-full bg-brand px-3 text-center text-[11px] font-black uppercase tracking-wider text-white hover:bg-brand-dark"
+            className="flex min-h-12 flex-1 flex-col items-center justify-center rounded-full bg-brand px-3 text-center text-white hover:bg-brand-dark"
           >
-            {loggedIn ? memberLabel : 'Acceso socios'}
+            <span className="text-[11px] font-black uppercase tracking-wider">
+              {loggedIn ? memberLabel : 'Iniciar socio'}
+            </span>
+            <span className="text-[9px] font-semibold text-white/80">Cuenta</span>
           </Link>
           <Link
             href="/app/registro"

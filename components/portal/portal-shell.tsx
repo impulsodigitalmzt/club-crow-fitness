@@ -6,7 +6,7 @@ import { CircleHelp } from 'lucide-react';
 import { PortalBottomNav } from '@/components/portal/bottom-nav';
 import { HelpDrawer, HelpProvider, useHelp } from '@/components/help/help-drawer';
 import { CartProvider } from '@/components/portal/cart-context';
-import { CartDrawer, CartHeaderButton } from '@/components/portal/cart-drawer';
+import { CartHeaderButton } from '@/components/portal/cart-header-button';
 import { portalHelpContent } from '@/lib/portal/faq-data';
 import '@/app/app/portal.css';
 
@@ -60,7 +60,6 @@ export function PortalShell({ children }: { children: React.ReactNode }) {
           </main>
 
           <PortalBottomNav />
-          <CartDrawer />
           <HelpDrawer content={portalHelpContent} theme="portal" />
         </div>
       </CartProvider>

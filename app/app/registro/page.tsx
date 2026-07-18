@@ -32,7 +32,7 @@ export default function MemberRegisterPage() {
             href="/app/login"
             className="mt-5 block text-center text-xs font-bold text-zinc-500 hover:text-white"
           >
-            Ya soy socio · Iniciar sesión
+            Ya soy socio · Iniciar socio
           </Link>
         </div>
       </div>

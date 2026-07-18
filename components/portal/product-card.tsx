@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { ShoppingBag } from 'lucide-react';
 import {
   isCrowMemberForDiscount,
@@ -13,9 +14,17 @@ export function ProductCard({ product }: { product: ShopProduct }) {
   const { addItem, isMember } = useCart();
   const member = isMember || isCrowMemberForDiscount();
   const displayPrice = memberUnitPrice(product.price, member);
+  const [justAdded, setJustAdded] = useState(false);
+
+  useEffect(() => {
+    if (!justAdded) return;
+    const t = window.setTimeout(() => setJustAdded(false), 1200);
+    return () => window.clearTimeout(t);
+  }, [justAdded]);
 
   function addToCart() {
     addItem(product, 1);
+    setJustAdded(true);
   }
 
   return (
@@ -59,10 +68,14 @@ export function ProductCard({ product }: { product: ShopProduct }) {
           <button
             type="button"
             onClick={addToCart}
-            className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand text-[11px] font-black uppercase tracking-wider text-white active:scale-[0.98] hover:bg-brand-dark"
+            className={`flex min-h-12 w-full items-center justify-center gap-2 rounded-xl text-[11px] font-black uppercase tracking-wider text-white active:scale-[0.98] ${
+              justAdded
+                ? 'bg-emerald-500 hover:bg-emerald-500'
+                : 'bg-brand hover:bg-brand-dark'
+            }`}
           >
             <ShoppingBag className="size-4" />
-            Agregar al carrito
+            {justAdded ? 'Agregado' : 'Agregar al carrito'}
           </button>
         </div>
       </div>

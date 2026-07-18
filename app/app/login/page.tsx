@@ -70,7 +70,7 @@ function MemberLoginForm() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.png" alt="Crow" className="mx-auto size-14 object-contain" />
         <p className="mt-5 text-center font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--portal-brand-light)]">
-          Acceso socios
+          Iniciar socio
         </p>
         <h1 className="mt-2 text-center font-display text-3xl font-black uppercase text-white">
           Entra a Crow App

@@ -46,7 +46,8 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
   const [open, setOpen] = useState(false);
   const loggedIn = useMemberLoggedIn();
   const memberHref = loggedIn ? '/app' : '/app/login';
-  const memberLabel = loggedIn ? 'Mi portal' : 'Soy socio';
+  const memberTitle = loggedIn ? 'Mi portal' : 'Iniciar socio';
+  const memberSubtitle = 'Cuenta';
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
@@ -74,14 +75,20 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
           {cartSlot ? <div className="flex items-center">{cartSlot}</div> : null}
           <SocialLinks />
 
+          {/* Acceso rápido socios — cualquiera ve el menú; esto solo entra al portal */}
           <Link
             href={memberHref}
-            className="inline-flex items-center gap-1.5 rounded-full border border-brand/50 bg-brand/15 px-2.5 py-2.5 text-[11px] font-black uppercase tracking-wider text-brand-light transition-colors hover:border-brand hover:bg-brand/25 sm:gap-2 sm:px-4 sm:text-xs"
-            aria-label={loggedIn ? 'Ir a mi portal de socio' : 'Entrar como socio'}
+            className="inline-flex items-center gap-2 rounded-full border border-brand/50 bg-brand/15 px-2.5 py-1.5 text-brand-light transition-colors hover:border-brand hover:bg-brand/25 sm:px-3"
+            aria-label={loggedIn ? 'Ir a mi portal de socio' : 'Iniciar socio'}
           >
-            <UserRound className="size-4 shrink-0" />
-            <span className="max-sm:hidden">{memberLabel}</span>
-            <span className="sm:hidden">{loggedIn ? 'Portal' : 'Socio'}</span>
+            <UserRound className="size-5 shrink-0" />
+            <span className="hidden leading-tight sm:block">
+              <span className="block text-[11px] font-black uppercase tracking-wider">{memberTitle}</span>
+              <span className="block text-[10px] font-semibold text-brand-light/80">{memberSubtitle}</span>
+            </span>
+            <span className="text-[11px] font-black uppercase tracking-wider sm:hidden">
+              {loggedIn ? 'Cuenta' : 'Socio'}
+            </span>
           </Link>
 
           <Link
@@ -107,7 +114,7 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
         open={open}
         onClose={() => setOpen(false)}
         memberHref={memberHref}
-        memberLabel={memberLabel}
+        memberLabel={memberTitle}
         loggedIn={loggedIn}
       />
     </header>
