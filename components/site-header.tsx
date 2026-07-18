@@ -45,7 +45,7 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
 
         <div className="flex items-center gap-2 sm:gap-3">
           {cartSlot ? <div className="flex items-center">{cartSlot}</div> : null}
-          <SocialLinks className="hidden sm:flex" />
+          <SocialLinks />
 
           <Link
             href="/app/registro"
@@ -84,7 +84,6 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
               </Link>
             ))}
             <div className="flex items-center justify-between gap-3 pt-5">
-              <SocialLinks />
               {cartSlot}
               <Link
                 href="/app/registro"
