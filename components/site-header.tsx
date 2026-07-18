@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, UserRound, X } from 'lucide-react';
+import { Menu, UserRound } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { BrandLogo } from './brand-logo';
 import { MobileNavMenu } from './mobile-nav-menu';
@@ -47,68 +47,71 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
   const loggedIn = useMemberLoggedIn();
   const memberHref = loggedIn ? '/app' : '/app/login';
   const memberTitle = loggedIn ? 'Mi portal' : 'Iniciar socio';
-  const memberSubtitle = 'Cuenta';
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-4 px-5 sm:px-8">
-        <BrandLogo />
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl">
+        <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-3 px-5 sm:px-8">
+          <BrandLogo />
 
-        <nav className="hidden items-center gap-7 lg:flex">
-          {navigation.map((item) => {
-            const active = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-xs font-bold uppercase tracking-[0.12em] transition-colors ${
-                  active ? 'text-brand' : 'text-zinc-400 hover:text-white'
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+          <nav className="hidden items-center gap-7 lg:flex">
+            {navigation.map((item) => {
+              const active =
+                pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-xs font-bold uppercase tracking-[0.12em] transition-colors ${
+                    active ? 'text-brand' : 'text-zinc-400 hover:text-white'
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          {cartSlot ? <div className="flex items-center">{cartSlot}</div> : null}
-          <SocialLinks />
+          <div className="flex items-center gap-2 sm:gap-3">
+            {cartSlot ? <div className="flex items-center">{cartSlot}</div> : null}
 
-          {/* Acceso rápido socios — cualquiera ve el menú; esto solo entra al portal */}
-          <Link
-            href={memberHref}
-            className="inline-flex items-center gap-2 rounded-full border border-brand/50 bg-brand/15 px-2.5 py-1.5 text-brand-light transition-colors hover:border-brand hover:bg-brand/25 sm:px-3"
-            aria-label={loggedIn ? 'Ir a mi portal de socio' : 'Iniciar socio'}
-          >
-            <UserRound className="size-5 shrink-0" />
-            <span className="hidden leading-tight sm:block">
-              <span className="block text-[11px] font-black uppercase tracking-wider">{memberTitle}</span>
-              <span className="block text-[10px] font-semibold text-brand-light/80">{memberSubtitle}</span>
-            </span>
-            <span className="text-[11px] font-black uppercase tracking-wider sm:hidden">
-              {loggedIn ? 'Cuenta' : 'Socio'}
-            </span>
-          </Link>
+            {/* Redes: a la izquierda del hamburguesa en móvil */}
+            <SocialLinks />
 
-          <Link
-            href="/app/registro"
-            className="hidden rounded-full border border-white/15 px-5 py-3 text-xs font-black uppercase tracking-wider text-white transition-colors hover:border-white/30 hover:bg-white/5 sm:inline-flex"
-          >
-            Únete
-          </Link>
+            {/* Acceso socio solo en desktop; en móvil va dentro del menú */}
+            <Link
+              href={memberHref}
+              className="hidden items-center gap-2 rounded-full border border-brand/50 bg-brand/15 px-3 py-1.5 text-brand-light transition-colors hover:border-brand hover:bg-brand/25 lg:inline-flex"
+              aria-label={loggedIn ? 'Ir a mi portal de socio' : 'Iniciar socio'}
+            >
+              <UserRound className="size-5 shrink-0" />
+              <span className="leading-tight">
+                <span className="block text-[11px] font-black uppercase tracking-wider">
+                  {memberTitle}
+                </span>
+                <span className="block text-[10px] font-semibold text-brand-light/80">Cuenta</span>
+              </span>
+            </Link>
 
-          <button
-            type="button"
-            onClick={() => setOpen((value) => !value)}
-            className="rounded-full border border-white/15 p-2.5 text-white lg:hidden"
-            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={open}
-          >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+            <Link
+              href="/app/registro"
+              className="hidden rounded-full border border-white/15 px-5 py-3 text-xs font-black uppercase tracking-wider text-white transition-colors hover:border-white/30 hover:bg-white/5 lg:inline-flex"
+            >
+              Únete
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="rounded-full border border-white/15 p-2.5 text-white lg:hidden"
+              aria-label="Abrir menú"
+              aria-expanded={open}
+            >
+              <Menu className="size-5" />
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
       <MobileNavMenu
         open={open}
@@ -117,6 +120,6 @@ export function SiteHeader({ cartSlot }: { cartSlot?: ReactNode }) {
         memberLabel={memberTitle}
         loggedIn={loggedIn}
       />
-    </header>
+    </>
   );
 }

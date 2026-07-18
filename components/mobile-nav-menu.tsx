@@ -18,7 +18,8 @@ import {
   X,
   type LucideIcon,
 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { socialLinks } from './social-links';
 
 const menuItems: { href: string; label: string; icon: LucideIcon }[] = [
@@ -48,6 +49,16 @@ export function MobileNavMenu({
   loggedIn,
 }: MobileNavMenuProps) {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    onClose();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- cerrar solo al cambiar de ruta
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -58,18 +69,23 @@ export function MobileNavMenu({
     };
   }, [open]);
 
-  if (!open) return null;
+  if (!mounted || !open) return null;
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-[60] flex flex-col bg-[#F4F1EC] lg:hidden"
+      className="fixed inset-0 z-[100] flex flex-col bg-[#F4F1EC] lg:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Menú de navegación"
     >
       {/* Header — logo + cerrar */}
-      <div className="flex shrink-0 items-center justify-between gap-3 px-5 pb-2 pt-[max(0.85rem,env(safe-area-inset-top))]">
-        <Link href="/" onClick={onClose} className="flex min-w-0 items-center gap-2.5" aria-label="Crow Fitness Club">
+      <div className="flex shrink-0 items-center justify-between gap-3 px-5 pb-3 pt-[max(0.85rem,env(safe-area-inset-top))]">
+        <Link
+          href="/"
+          onClick={onClose}
+          className="flex min-w-0 items-center gap-2.5"
+          aria-label="Crow Fitness Club"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.png" alt="" className="size-10 shrink-0 object-contain" />
           <div className="min-w-0">
@@ -84,7 +100,7 @@ export function MobileNavMenu({
         <button
           type="button"
           onClick={onClose}
-          className="flex size-11 shrink-0 items-center justify-center rounded-full border-[1.5px] border-zinc-800/80 bg-white text-zinc-900"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border-[1.5px] border-zinc-800/80 bg-white text-zinc-900 shadow-sm"
           aria-label="Cerrar menú"
         >
           <X className="size-5" strokeWidth={2.25} />
@@ -92,12 +108,12 @@ export function MobileNavMenu({
       </div>
 
       {/* Contenido scroll */}
-      <div className="flex-1 space-y-3.5 overflow-y-auto px-5 pb-3">
+      <div className="min-h-0 flex-1 space-y-3.5 overflow-y-auto overscroll-contain px-5 pb-3">
         {/* Card destacada */}
         <Link
           href="/membresias"
           onClick={onClose}
-          className="relative block overflow-hidden rounded-[1.5rem] border-[3px] border-zinc-400"
+          className="relative block overflow-hidden rounded-[1.5rem]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -105,7 +121,7 @@ export function MobileNavMenu({
             alt=""
             className="h-[11.5rem] w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/20" />
           <div className="absolute inset-0 flex flex-col justify-end p-5 text-white">
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-brand-light">
               Empieza hoy
@@ -123,7 +139,7 @@ export function MobileNavMenu({
         </Link>
 
         {/* Navegación */}
-        <nav className="overflow-hidden rounded-[1.5rem] border-[3px] border-zinc-400 bg-[#FAF7F2] p-2">
+        <nav className="overflow-hidden rounded-[1.5rem] bg-white/80 p-2">
           {menuItems.map(({ href, label, icon: Icon }) => {
             const active =
               href === '/'
@@ -135,10 +151,12 @@ export function MobileNavMenu({
                 href={href}
                 onClick={onClose}
                 className={`flex items-center gap-3 rounded-[1.1rem] px-3.5 py-3.5 transition-colors ${
-                  active ? 'bg-brand/15 text-brand' : 'text-zinc-900 hover:bg-black/[0.03]'
+                  active ? 'bg-brand/15 text-brand' : 'text-zinc-900 active:bg-black/[0.04]'
                 }`}
               >
-                <Icon className={`size-[1.15rem] shrink-0 ${active ? 'text-brand' : 'text-zinc-500'}`} />
+                <Icon
+                  className={`size-[1.15rem] shrink-0 ${active ? 'text-brand' : 'text-zinc-500'}`}
+                />
                 <span className="flex-1 text-[15px] font-semibold tracking-tight">{label}</span>
               </Link>
             );
@@ -146,7 +164,7 @@ export function MobileNavMenu({
         </nav>
 
         {/* Visítanos */}
-        <div className="rounded-[1.5rem] border-[3px] border-zinc-400 bg-[#FAF7F2] p-5">
+        <div className="rounded-[1.5rem] bg-white/80 p-5">
           <p className="mb-4 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
             Visítanos
           </p>
@@ -171,11 +189,11 @@ export function MobileNavMenu({
         </div>
 
         {/* Síguenos */}
-        <div className="px-0.5 pb-1">
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
+        <div className="flex items-center justify-between gap-3 px-0.5 pb-2">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
             Síguenos
           </p>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2">
             {socialLinks.map(({ href, label, icon: Icon }) => (
               <a
                 key={href}
@@ -183,7 +201,7 @@ export function MobileNavMenu({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="inline-flex size-11 items-center justify-center rounded-full border-[1.5px] border-zinc-400 text-zinc-700 transition-colors hover:border-brand hover:text-brand"
+                className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-700 transition-colors hover:border-brand hover:text-brand"
               >
                 <Icon className="size-4" />
               </a>
@@ -192,13 +210,13 @@ export function MobileNavMenu({
         </div>
       </div>
 
-      {/* Acciones inferiores — opcionales; el menú de arriba es público para todos */}
-      <div className="shrink-0 bg-[#F4F1EC] px-5 pb-[max(1.1rem,env(safe-area-inset-bottom))] pt-2">
+      {/* Acceso socios / Inscribirse — solo aquí, como en la referencia */}
+      <div className="shrink-0 border-t border-zinc-200/80 bg-[#F4F1EC] px-5 pb-[max(1.1rem,env(safe-area-inset-bottom))] pt-3">
         <div className="flex gap-2.5">
           <Link
             href={memberHref}
             onClick={onClose}
-            className="flex min-h-12 flex-1 flex-col items-center justify-center rounded-full bg-brand px-3 text-center text-white hover:bg-brand-dark"
+            className="flex min-h-12 flex-1 flex-col items-center justify-center rounded-full bg-brand px-3 text-center text-white active:bg-brand-dark"
           >
             <span className="text-[11px] font-black uppercase tracking-wider">
               {loggedIn ? memberLabel : 'Iniciar socio'}
@@ -208,12 +226,13 @@ export function MobileNavMenu({
           <Link
             href="/app/registro"
             onClick={onClose}
-            className="flex min-h-12 flex-1 items-center justify-center rounded-full border-[2.5px] border-brand px-3 text-center text-[11px] font-black uppercase tracking-wider text-brand hover:bg-brand/10"
+            className="flex min-h-12 flex-1 items-center justify-center rounded-full border-[2.5px] border-brand bg-white px-3 text-center text-[11px] font-black uppercase tracking-wider text-brand active:bg-brand/10"
           >
             Inscribirse
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
