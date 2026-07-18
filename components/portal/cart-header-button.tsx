@@ -1,12 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingBag } from 'lucide-react';
 import { useCart } from '@/components/portal/cart-context';
 
 /**
- * Carrito del header (estilo tienda): icono + badge de cantidad + total debajo.
- * Al tocar va a /tienda/carrito — no abre modal.
+ * Carrito del header — solo en la tienda.
+ * Icono: /carrito-de-compras.gif + badge + total.
  */
 export function CartHeaderButton() {
   const { count, total } = useCart();
@@ -22,7 +21,12 @@ export function CartHeaderButton() {
       }
     >
       <span className="relative inline-flex">
-        <ShoppingBag className="size-6 text-white" strokeWidth={2} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/carrito-de-compras.gif"
+          alt=""
+          className="size-7 object-contain"
+        />
         {count > 0 ? (
           <span className="absolute -right-2 -top-1.5 flex h-[1.15rem] min-w-[1.15rem] items-center justify-center rounded-full bg-[#FBBF24] px-1 text-[10px] font-black leading-none text-black">
             {count > 99 ? '99+' : count}

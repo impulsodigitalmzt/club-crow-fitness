@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronLeft, Minus, Plus, ShoppingBag, Trash2 } from 'lucide-react';
+import { ChevronLeft, Minus, Plus, Trash2 } from 'lucide-react';
 import { useCart } from '@/components/portal/cart-context';
 import { ShopPickupNotice } from '@/components/shop/pickup-notice';
 import { MEMBER_SHOP_DISCOUNT } from '@/lib/portal/store-data';
@@ -47,7 +47,8 @@ export default function TiendaCarritoPage() {
 
         {count === 0 ? (
           <div className="mt-10 rounded-[1.75rem] border-[3px] border-zinc-500 bg-zinc-900 px-6 py-16 text-center">
-            <ShoppingBag className="mx-auto size-12 text-zinc-600" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/carrito-de-compras.gif" alt="" className="mx-auto size-14 object-contain opacity-50" />
             <p className="mt-4 text-base text-zinc-400">Tu carrito está vacío</p>
             <Link
               href="/tienda"

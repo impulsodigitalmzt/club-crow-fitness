@@ -12,6 +12,8 @@ import '@/app/app/portal.css';
 
 function PortalHeader() {
   const { openHelp } = useHelp();
+  const pathname = usePathname();
+  const showCart = pathname.startsWith('/app/tienda');
 
   return (
     <header className="sticky top-0 z-30 border-b border-white/10 bg-black/80 px-4 py-3 backdrop-blur-xl">
@@ -24,7 +26,7 @@ function PortalHeader() {
           </span>
         </Link>
         <div className="flex items-center gap-2">
-          <CartHeaderButton />
+          {showCart ? <CartHeaderButton /> : null}
           <button
             type="button"
             onClick={openHelp}

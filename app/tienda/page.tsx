@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ShoppingBag } from 'lucide-react';
 import { ContactCta } from '@/components/contact-cta';
 import { PageHero } from '@/components/page-hero';
 import { ProductCard } from '@/components/portal/product-card';
@@ -60,7 +59,8 @@ export default function TiendaPage() {
                     : 'border border-white/15 text-zinc-300 hover:border-brand hover:text-white'
                 }`}
               >
-                <ShoppingBag className="size-4" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/carrito-de-compras.gif" alt="" className="size-5 object-contain" />
                 {count > 0
                   ? `Ver carrito · $${total.toLocaleString('es-MX')}`
                   : 'Carrito'}
