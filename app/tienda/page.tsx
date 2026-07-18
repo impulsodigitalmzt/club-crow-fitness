@@ -60,7 +60,7 @@ export default function TiendaPage() {
                 }`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/carrito-de-compras.gif" alt="" className="size-5 object-contain" />
+                <img src="/icons/carrito-de-compras-white.png" alt="" className="size-5 object-contain" />
                 {count > 0
                   ? `Ver carrito · $${total.toLocaleString('es-MX')}`
                   : 'Carrito'}

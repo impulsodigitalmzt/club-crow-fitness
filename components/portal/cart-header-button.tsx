@@ -5,7 +5,7 @@ import { useCart } from '@/components/portal/cart-context';
 
 /**
  * Carrito del header — solo en la tienda.
- * Icono: /carrito-de-compras.gif + badge + total.
+ * Icono: carrito PNG con líneas blancas + badge + total.
  */
 export function CartHeaderButton() {
   const { count, total } = useCart();
@@ -23,7 +23,7 @@ export function CartHeaderButton() {
       <span className="relative inline-flex">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/carrito-de-compras.gif"
+          src="/icons/carrito-de-compras-white.png"
           alt=""
           className="size-7 object-contain"
         />

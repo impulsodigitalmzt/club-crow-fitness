@@ -48,7 +48,7 @@ export default function TiendaCarritoPage() {
         {count === 0 ? (
           <div className="mt-10 rounded-[1.75rem] border-[3px] border-zinc-500 bg-zinc-900 px-6 py-16 text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/carrito-de-compras.gif" alt="" className="mx-auto size-14 object-contain opacity-50" />
+            <img src="/icons/carrito-de-compras-white.png" alt="" className="mx-auto size-14 object-contain opacity-70" />
             <p className="mt-4 text-base text-zinc-400">Tu carrito está vacío</p>
             <Link
               href="/tienda"
