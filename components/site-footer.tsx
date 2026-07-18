@@ -15,25 +15,30 @@ export function SiteFooter() {
           <p className="text-sm leading-relaxed text-zinc-500">
             Un espacio creado para moverte mejor, elevar tu rendimiento y formar parte de una comunidad que no se detiene.
           </p>
-          <div className="flex items-center gap-2 pt-1">
-            <a
-              href={facebook.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={facebook.label}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
-            >
-              <Facebook className="size-4" />
-            </a>
-            <a
-              href={instagram.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={instagram.label}
-              className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
-            >
-              <Instagram className="size-4" />
-            </a>
+          <div className="pt-1">
+            <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-brand">
+              Redes Sociales
+            </p>
+            <div className="flex items-center gap-2">
+              <a
+                href={facebook.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={facebook.label}
+                className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
+              >
+                <Facebook className="size-4" />
+              </a>
+              <a
+                href={instagram.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={instagram.label}
+                className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
+              >
+                <Instagram className="size-4" />
+              </a>
+            </div>
           </div>
         </div>
 

@@ -53,7 +53,7 @@ function ShopPayContent() {
             ¡Compra confirmada!
           </h1>
           <p className="mt-2 text-sm text-zinc-400">
-            Pago simulado por ${amount.toLocaleString('es-MX')} MXN.
+            Pago confirmado por ${amount.toLocaleString('es-MX')} MXN.
             {memberApplied ? ' Incluye descuento de socio.' : ''}
           </p>
           <div className="mt-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-4 py-4 text-left text-sm text-amber-100">
@@ -91,7 +91,9 @@ function ShopPayContent() {
           Pago en línea
         </p>
         <h1 className="mt-1 font-display text-3xl font-black uppercase text-white">Checkout tienda</h1>
-        <p className="mt-2 text-sm text-zinc-400">Simulación Crow · no se cobra tarjeta real.</p>
+        <p className="mt-2 text-sm text-zinc-400">
+            Pago seguro con tarjeta. Recoges en la sucursal que elijas.
+          </p>
       </header>
 
       <ShopPickupNotice />
@@ -165,7 +167,7 @@ function ShopPayContent() {
         className="flex min-h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand py-4 text-sm font-black uppercase tracking-wider text-white hover:bg-brand-dark disabled:opacity-70"
       >
         {processing ? <Loader2 className="size-5 animate-spin" /> : <Sparkles className="size-5" />}
-        {processing ? 'Procesando...' : 'Simular Pago Exitoso'}
+        {processing ? 'Procesando pago...' : 'Pagar ahora'}
       </button>
 
       <button

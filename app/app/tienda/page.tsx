@@ -22,18 +22,6 @@ export default function MemberShopPage() {
     setProducts(loadShopCatalog());
     setIsMember(isCrowMemberForDiscount());
     refreshMember();
-
-    const refresh = () => {
-      setProducts(loadShopCatalog());
-      setIsMember(isCrowMemberForDiscount());
-      refreshMember();
-    };
-    window.addEventListener('crow-admin-db-updated', refresh);
-    window.addEventListener('storage', refresh);
-    return () => {
-      window.removeEventListener('crow-admin-db-updated', refresh);
-      window.removeEventListener('storage', refresh);
-    };
   }, [refreshMember]);
 
   return (
@@ -44,37 +32,23 @@ export default function MemberShopPage() {
         </p>
         <h1 className="mt-1 font-display text-3xl font-black uppercase text-white">Merch & gear</h1>
         <p className="mt-2 text-sm text-zinc-400">
-          Compra abierta a todos. Socios: {Math.round(MEMBER_SHOP_DISCOUNT * 100)}% de descuento.
+          Compra en línea y recoge en sucursal.
+          {isMember
+            ? ` Descuento socio ${Math.round(MEMBER_SHOP_DISCOUNT * 100)}% activo.`
+            : ''}
         </p>
       </header>
 
       <ShopPickupNotice />
 
-      {isMember ? (
-        <p className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-xs text-emerald-300">
-          Descuento socio activo (−{Math.round(MEMBER_SHOP_DISCOUNT * 100)}%).
-        </p>
-      ) : (
-        <p className="rounded-2xl border border-white/10 bg-[var(--portal-card)] px-4 py-3 text-xs text-zinc-400">
-          Precio de lista. Si tu membresía está activa en este dispositivo, el 10% se aplica solo.
-        </p>
-      )}
-
-      {products.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-[var(--portal-card)] p-8 text-center">
-          <ShoppingBag className="mx-auto size-10 text-zinc-600" />
-          <p className="mt-3 text-sm text-zinc-400">No hay productos públicos por ahora.</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 gap-3">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-2 gap-3">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
 
       <Link href="/tienda" className="block text-center text-xs font-bold text-zinc-500 hover:text-white">
-        Ver tienda en el sitio web
+        Ver tienda completa
       </Link>
 
       {count > 0 ? (

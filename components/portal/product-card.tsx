@@ -1,6 +1,6 @@
 'use client';
 
-import { ShoppingBag, Zap } from 'lucide-react';
+import { CreditCard, ShoppingBag } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import {
   isCrowMemberForDiscount,
@@ -16,7 +16,7 @@ export function ProductCard({ product }: { product: ShopProduct }) {
   const member = isMember || isCrowMemberForDiscount();
   const displayPrice = memberUnitPrice(product.price, member);
 
-  function buyNow() {
+  function buyOnline() {
     const next = addItem(product, 1);
     setOpen(false);
     router.push(checkoutUrlFromItems(next, isCrowMemberForDiscount()));
@@ -24,31 +24,34 @@ export function ProductCard({ product }: { product: ShopProduct }) {
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#121214]">
-      <div className="relative aspect-square bg-zinc-900">
+      <div className="relative aspect-square bg-[#f3f3f3]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt="" className="absolute inset-0 size-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        <img
+          src={product.image}
+          alt={product.name}
+          className="absolute inset-0 size-full object-contain p-3"
+        />
         {member ? (
           <span className="absolute left-2 top-2 rounded-full bg-emerald-500 px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-black">
             -{Math.round(MEMBER_SHOP_DISCOUNT * 100)}% socio
           </span>
         ) : null}
-        {product.stock <= 5 ? (
-          <span className="absolute right-2 top-2 rounded-full bg-amber-500/90 px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-black">
-            Quedan {product.stock}
-          </span>
-        ) : null}
       </div>
 
-      <div className="flex flex-1 flex-col p-3.5">
-        <h3 className="line-clamp-2 text-sm font-bold leading-snug text-white">{product.name}</h3>
-        {product.description ? (
-          <p className="mt-1 line-clamp-1 text-[11px] text-zinc-500">{product.description}</p>
-        ) : null}
-        <div className="mt-2 flex items-baseline gap-2">
-          <p className="font-display text-xl font-black text-brand-light">
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="font-display text-lg font-black uppercase leading-snug text-white">
+          {product.name}
+        </h3>
+        <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-zinc-400">
+          {product.description}
+        </p>
+        <div className="mt-3 flex items-baseline gap-2">
+          <p className="font-display text-2xl font-black text-brand-light">
             ${displayPrice.toLocaleString('es-MX')}
           </p>
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+            MXN
+          </span>
           {member ? (
             <p className="text-xs text-zinc-500 line-through">
               ${product.price.toLocaleString('es-MX')}
@@ -56,22 +59,22 @@ export function ProductCard({ product }: { product: ShopProduct }) {
           ) : null}
         </div>
 
-        <div className="mt-auto grid gap-2 pt-3">
+        <div className="mt-auto grid gap-2 pt-4">
           <button
             type="button"
-            onClick={() => addItem(product)}
+            onClick={buyOnline}
             className="flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand text-[11px] font-black uppercase tracking-wider text-white active:scale-[0.98] hover:bg-brand-dark"
           >
-            <ShoppingBag className="size-4" />
-            Agregar
+            <CreditCard className="size-4" />
+            Comprar en línea
           </button>
           <button
             type="button"
-            onClick={buyNow}
+            onClick={() => addItem(product)}
             className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 text-[11px] font-black uppercase tracking-wider text-white active:scale-[0.98] hover:border-brand"
           >
-            <Zap className="size-3.5" />
-            Comprar ahora
+            <ShoppingBag className="size-3.5" />
+            Agregar al carrito
           </button>
         </div>
       </div>

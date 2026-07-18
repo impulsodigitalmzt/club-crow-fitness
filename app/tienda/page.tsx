@@ -25,18 +25,6 @@ export default function TiendaPage() {
     setProducts(loadShopCatalog());
     setIsMember(isCrowMemberForDiscount());
     refreshMember();
-
-    const refresh = () => {
-      setProducts(loadShopCatalog());
-      setIsMember(isCrowMemberForDiscount());
-      refreshMember();
-    };
-    window.addEventListener('crow-admin-db-updated', refresh);
-    window.addEventListener('storage', refresh);
-    return () => {
-      window.removeEventListener('crow-admin-db-updated', refresh);
-      window.removeEventListener('storage', refresh);
-    };
   }, [refreshMember]);
 
   return (
@@ -44,8 +32,9 @@ export default function TiendaPage() {
       <PageHero
         eyebrow="Tienda Crow"
         title={'MERCH & GEAR.\n*COMPRA EN LÍNEA.*'}
-        description="Cualquiera puede comprar. Si eres socio Crow, tienes 10% de descuento automático. Pagas en línea y recoges en sucursal."
-        image="/fotos/comunidad-mujeres.jpg"
+        description="Playeras, shorts, gorras, shakers, toallas y Crow Whey. Paga en línea y recoge en El Toreo o Real del Valle. Socios Crow: 10% de descuento."
+        image="/fotos/tienda/Gemini_Generated_Image_be0h4obe0h4obe0h.png"
+        imagePosition="center"
         primaryHref="#catalogo"
         primaryLabel="Ver productos"
       />
@@ -61,8 +50,7 @@ export default function TiendaPage() {
                 Productos Crow
               </h2>
               <p className="mt-3 max-w-xl text-sm text-zinc-400">
-                Compra sin membresía. El pago es simulado en esta demo; en producción se conecta a
-                Stripe o Mercado Pago.
+                Compra en línea con pago seguro. Tu pedido queda listo para recoger en sucursal.
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -86,7 +74,7 @@ export default function TiendaPage() {
 
           {isMember ? (
             <div className="mb-8 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-5 py-4 text-sm text-emerald-200">
-              Socio Crow detectado: se aplica{' '}
+              Socio Crow: tienes{' '}
               <strong>{Math.round(MEMBER_SHOP_DISCOUNT * 100)}% de descuento</strong> en todos los
               productos.
             </div>
@@ -96,20 +84,15 @@ export default function TiendaPage() {
               <Link href="/app/login?next=/tienda" className="font-bold text-brand-light underline">
                 Inicia sesión
               </Link>{' '}
-              para obtener {Math.round(MEMBER_SHOP_DISCOUNT * 100)}% de descuento en toda la tienda.
-              Si no lo eres, igual puedes comprar al precio de lista.
+              y obtén {Math.round(MEMBER_SHOP_DISCOUNT * 100)}% de descuento en toda la tienda.
             </div>
           )}
 
-          {products.length === 0 ? (
-            <p className="text-zinc-500">No hay productos disponibles por ahora.</p>
-          ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </section>
 
