@@ -24,6 +24,135 @@ export type ShopProduct = {
   category: 'playera' | 'short' | 'gorra' | 'shaker' | 'toalla' | 'suplemento';
 };
 
+export type ShopProductSpec = { label: string; value: string };
+
+export type ShopProductInfo = {
+  summary: string;
+  features: string[];
+  moreText: string;
+  specs: ShopProductSpec[];
+};
+
+const categoryLabels: Record<ShopProduct['category'], string> = {
+  playera: 'Playera',
+  short: 'Short',
+  gorra: 'Gorra',
+  shaker: 'Shaker',
+  toalla: 'Toalla',
+  suplemento: 'Suplemento',
+};
+
+const categoryDefaults: Record<
+  ShopProduct['category'],
+  { features: string[]; moreText: string; specs: ShopProductSpec[] }
+> = {
+  playera: {
+    features: [
+      '【MARCA CROW】: Estampado oficial Crow Fitness Club Mazatlán.',
+      '【COMODIDAD】: Tela ligera y respirable para entrenar o uso diario.',
+      '【CORTE UNISEX】: Ajuste versátil para hombre y mujer.',
+      '【CUIDADO】: Lavar a máquina en frío; no usar blanqueador.',
+    ],
+    moreText:
+      'Ideal para sesiones de fuerza, clases grupales o streetwear. Combínala con shorts o joggers Crow. Recoge en sucursal El Toreo o Real del Valle después de pagar en línea.',
+    specs: [
+      { label: 'Material', value: 'Algodón / blend deportivo' },
+      { label: 'Corte', value: 'Unisex' },
+      { label: 'Uso', value: 'Gym y diario' },
+    ],
+  },
+  short: {
+    features: [
+      '【ENTRENAMIENTO】: Pensado para fuerza, HIIT y cardio.',
+      '【MOVILIDAD】: Cintura elástica y corte que no limita el movimiento.',
+      '【MARCA CROW】: Logo oficial del club.',
+      '【CUIDADO】: Secado rápido; lavar en frío.',
+    ],
+    moreText:
+      'Short técnico Crow para sesiones largas en el box. Recogida en sucursal tras tu compra en línea; sin envío a domicilio.',
+    specs: [
+      { label: 'Material', value: 'Tela técnica' },
+      { label: 'Cintura', value: 'Elástica' },
+      { label: 'Uso', value: 'Entrenamiento' },
+    ],
+  },
+  gorra: {
+    features: [
+      '【ESTILO CLUB】: Logo / parche Crow Fitness.',
+      '【AJUSTE】: Cierre trasero ajustable.',
+      '【LIGERA】: Cómoda para gym, calle o playa en Mazatlán.',
+      '【CUIDADO】: Limpiar con paño húmedo; no meter a lavadora agresiva.',
+    ],
+    moreText:
+      'Gorra oficial Crow para completar tu look del club. Paga en línea y recoge en cualquiera de nuestras dos sucursales.',
+    specs: [
+      { label: 'Tipo', value: 'Gorra ajustable' },
+      { label: 'Visera', value: 'Curva' },
+      { label: 'Uso', value: 'Urbano / outdoor' },
+    ],
+  },
+  shaker: {
+    features: [
+      '【CAPACIDAD】: 700 ml para proteína, creatina o pre-entreno.',
+      '【MEZCLA】: Incluye malla / sistema mezclador.',
+      '【SEGURIDAD】: Libre de BPA; tapa anti-derrames.',
+      '【MARCA CROW】: Branding oficial del club.',
+    ],
+    moreText:
+      'Llévalo al gym o a casa. Tras pagar en la tienda en línea, pásalo a recoger en El Toreo o Real del Valle.',
+    specs: [
+      { label: 'Capacidad', value: '700 ml' },
+      { label: 'Material', value: 'Plástico libre de BPA' },
+      { label: 'Uso', value: 'Suplementos / hidratación' },
+    ],
+  },
+  toalla: {
+    features: [
+      '【GYM READY】: Absorbente y compacta para tu bolsa.',
+      '【MARCA CROW】: Branding oficial del club.',
+      '【PRÁCTICA】: Ideal para clases, peso libre o post-entreno.',
+      '【CUIDADO】: Lavar a máquina; no usar suavizante en exceso.',
+    ],
+    moreText:
+      'Toalla de entrenamiento Crow. Compra en línea y recoge sin costo de envío en sucursal (no hay domicilio).',
+    specs: [
+      { label: 'Tipo', value: 'Toalla de gym' },
+      { label: 'Absorción', value: 'Alta' },
+      { label: 'Uso', value: 'Entrenamiento' },
+    ],
+  },
+  suplemento: {
+    features: [
+      '【RECUPERACIÓN】: Apoya metas de fuerza y masa muscular.',
+      '【SABOR】: Chocolate Crow.',
+      '【PRESENTACIÓN】: 1 kg.',
+      '【USO】: Combínala con tu rutina y nutrición del club.',
+    ],
+    moreText:
+      'Suplemento Crow Whey. Consulta con tu coach si tienes dudas de uso. Pago en línea y recogida en sucursal únicamente.',
+    specs: [
+      { label: 'Tipo', value: 'Proteína whey' },
+      { label: 'Sabor', value: 'Chocolate' },
+      { label: 'Presentación', value: '1 kg' },
+    ],
+  },
+};
+
+/** Detalle tipo ficha (Walmart): bullets + “un vistazo”. */
+export function getShopProductInfo(product: ShopProduct): ShopProductInfo {
+  const defaults = categoryDefaults[product.category];
+  return {
+    summary: product.description,
+    features: defaults.features,
+    moreText: defaults.moreText,
+    specs: [
+      { label: 'Categoría', value: categoryLabels[product.category] },
+      ...defaults.specs,
+      { label: 'Stock', value: `${product.stock} disponibles` },
+    ],
+  };
+}
+
 export type CartItem = {
   productId: string;
   name: string;
