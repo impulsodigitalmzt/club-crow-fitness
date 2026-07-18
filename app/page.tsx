@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { ArrowRight, Bot, Dumbbell, HeartPulse, Users } from 'lucide-react';
+import { AnimatedTitle, FadeUp } from '@/components/animated-title';
 import { ContactCta } from '@/components/contact-cta';
+import { CommunityImpactSection } from '@/components/community-impact-section';
 import { HeroIntro } from '@/components/hero-intro';
 import { HeroVideoWall } from '@/components/hero-video-wall';
-import { ReelCard } from '@/components/reel-card';
 import { ReviewsSection } from '@/components/reviews-section';
 import { SectionHeading } from '@/components/section-heading';
 import { TransformationsCarousel } from '@/components/transformations-carousel';
@@ -87,30 +88,38 @@ export default function HomePage() {
       <section className="border-t border-white/10 bg-[#0a0a0a] py-24">
         <div className="mx-auto grid max-w-[1200px] gap-10 px-5 sm:px-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
           <div>
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
-              Crow App
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-black uppercase leading-none text-white sm:text-5xl">
-              Acceso a socios. <span className="text-gradient-brand">Únete al club.</span>
-            </h2>
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
-              Si ya eres miembro, entra a tu portal para ver tu membresía, la clase del día y los retos.
-              Si aún no lo eres, elige tu plan y activa tu acceso en minutos.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href="/app/login"
-                className="inline-flex rounded-full bg-brand px-6 py-4 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
-              >
-                Ya soy socio · Entrar
-              </Link>
-              <Link
-                href="/app/registro"
-                className="inline-flex rounded-full border border-white/20 px-6 py-4 text-xs font-black uppercase tracking-wider text-white hover:border-brand hover:bg-brand/10"
-              >
-                Únete al club
-              </Link>
-            </div>
+            <FadeUp>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-brand">
+                Crow App
+              </p>
+            </FadeUp>
+            <AnimatedTitle
+              as="h2"
+              title={'Acceso a socios. *Únete al club.*'}
+              className="mt-4 font-display text-4xl font-black uppercase leading-none text-white sm:text-5xl"
+            />
+            <FadeUp delay={0.2}>
+              <p className="mt-5 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+                Si ya eres miembro, entra a tu portal para ver tu membresía, la clase del día y los retos.
+                Si aún no lo eres, elige tu plan y activa tu acceso en minutos.
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.3}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/app/login"
+                  className="inline-flex rounded-full bg-brand px-6 py-4 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
+                >
+                  Ya soy socio · Entrar
+                </Link>
+                <Link
+                  href="/app/registro"
+                  className="inline-flex rounded-full border border-white/20 px-6 py-4 text-xs font-black uppercase tracking-wider text-white hover:border-brand hover:bg-brand/10"
+                >
+                  Únete al club
+                </Link>
+              </div>
+            </FadeUp>
           </div>
 
           <div className="rounded-[2rem] border border-brand/30 bg-[radial-gradient(circle_at_20%_0%,rgba(201,54,232,.25),transparent_45%),#111] p-7 sm:p-9">
@@ -137,34 +146,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-[#090909] py-24">
-        <div className="mx-auto grid max-w-[1440px] gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <p className="font-display text-7xl font-black leading-none text-brand sm:text-9xl">1000+</p>
-            <p className="mt-3 font-display text-2xl font-black uppercase text-white">Entrenamientos que cambian hábitos</p>
-            <blockquote className="mt-10 max-w-xl font-display text-3xl font-black uppercase leading-tight text-white sm:text-5xl">
-              “Persigue el objetivo que suena imposible. Después, hazlo <span className="text-gradient-brand">inevitable.</span>”
-            </blockquote>
-            <p className="mt-8 max-w-lg text-sm leading-relaxed text-zinc-400">
-              La comunidad Crow también se mueve fuera del gimnasio: retos, carreras al atardecer y eventos que convierten el entrenamiento en estilo de vida.
-            </p>
-          </div>
-          <div className="flex justify-center gap-4 sm:gap-5">
-            <ReelCard
-              src="/videos/reto-crow.mp4"
-              title="Reto Crow"
-              subtitle="Eventos de comunidad"
-              className="aspect-[9/16] w-[42vw] max-w-[240px] lg:mt-12"
-            />
-            <ReelCard
-              src="/videos/comunidad-atardecer.mp4"
-              title="Comunidad"
-              subtitle="Mazatlán al atardecer"
-              className="aspect-[9/16] w-[42vw] max-w-[240px]"
-            />
-          </div>
-        </div>
-      </section>
+      <CommunityImpactSection />
 
       <section className="bg-black py-24">
         <div className="mx-auto max-w-[1440px] px-5 sm:px-8">
