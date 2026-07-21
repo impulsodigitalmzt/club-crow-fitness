@@ -12,10 +12,42 @@
 }
 
 @layer base {
+  html {
+    max-width: 100%;
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     background-color: #050505;
     color: #f4f4f5;
     font-family: var(--font-sans), sans-serif;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  /*
+   * En iPhone/iPad, Safari amplía automáticamente la página al enfocar un
+   * control cuya tipografía es menor a 16 px. Esta regla conserva el zoom
+   * manual por accesibilidad, pero evita ese salto automático y los
+   * desplazamientos horizontales durante la captura.
+   */
+  @media (max-width: 767px) {
+    input:not([type='checkbox']):not([type='radio']):not([type='range']):not([type='file']):not([type='button']):not([type='submit']):not([type='reset']),
+    select,
+    textarea {
+      min-width: 0;
+      max-width: 100%;
+      font-size: 16px !important;
+      line-height: 1.5;
+      touch-action: manipulation;
+    }
+
+    textarea {
+      resize: vertical;
+    }
   }
 }
 
