@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import { Clock3, Facebook, Instagram, MapPin, Phone } from 'lucide-react';
 import { BrandLogo } from './brand-logo';
-import { socialLinks } from './social-links';
+import { SocialLinks } from './social-links';
 
 export function SiteFooter() {
-  const facebook = socialLinks[0];
-  const instagram = socialLinks[1];
-
   return (
     <footer className="border-t border-white/10 bg-black">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr]">
@@ -19,26 +16,7 @@ export function SiteFooter() {
             <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-brand">
               Redes Sociales
             </p>
-            <div className="flex items-center gap-2">
-              <a
-                href={facebook.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={facebook.label}
-                className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
-              >
-                <Facebook className="size-4" />
-              </a>
-              <a
-                href={instagram.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={instagram.label}
-                className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
-              >
-                <Instagram className="size-4" />
-              </a>
-            </div>
+            <SocialLinks iconClassName="size-4" />
           </div>
         </div>
 
@@ -58,30 +36,20 @@ export function SiteFooter() {
           <div className="space-y-4 text-sm text-zinc-400">
             <p className="flex gap-3"><MapPin className="size-4 shrink-0 text-brand" /> El Toreo y Real del Valle</p>
             <p className="flex gap-3"><Clock3 className="size-4 shrink-0 text-brand" /> 5:00 a.m. – 10:00 p.m.</p>
-            <a href="tel:6691587875" className="flex gap-3 hover:text-white">
+            <Link href="/contacto" className="flex gap-3 hover:text-white" title="Demo: llamada simulada en Contacto">
               <Phone className="size-4 text-brand" /> 669 158 7875
-            </a>
-            <a
-              href={facebook.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-3 hover:text-white"
-            >
+            </Link>
+            <Link href="/contacto" className="flex gap-3 hover:text-white">
               <Facebook className="size-4 text-brand" /> Crow Fitness Club
-            </a>
-            <a
-              href={instagram.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-3 hover:text-white"
-            >
+            </Link>
+            <Link href="/contacto" className="flex gap-3 hover:text-white">
               <Instagram className="size-4 text-brand" /> @crowfitnessclub
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <div className="border-t border-white/10 px-5 py-6 text-center font-mono text-[10px] uppercase tracking-widest text-zinc-600">
-        © {new Date().getFullYear()} Crow Fitness Club. Fuerza, garra y disciplina.
+        © {new Date().getFullYear()} Crow Fitness Club · Demo / propuesta · Sin conexiones reales
       </div>
     </footer>
   );

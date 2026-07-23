@@ -1,8 +1,8 @@
 /**
- * Abstracción de pagos del portal.
- * Conecta después Stripe o Mercado Pago sin cambiar las pantallas.
+ * Abstracción de pagos del portal — solo demo / propuesta.
+ * No hay Stripe, Mercado Pago ni cobros reales: todo termina en /app/pagar simulado.
  */
-export type PaymentProvider = 'stripe' | 'mercadopago' | 'crow_checkout';
+export type PaymentProvider = 'crow_checkout';
 
 export type PaymentIntent = {
   kind: 'membership' | 'challenge';
@@ -14,8 +14,6 @@ export type PaymentIntent = {
 };
 
 export function getConfiguredPaymentProvider(): PaymentProvider {
-  if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) return 'stripe';
-  if (process.env.NEXT_PUBLIC_MP_PUBLIC_KEY) return 'mercadopago';
   return 'crow_checkout';
 }
 
@@ -29,7 +27,7 @@ export function buildMembershipPayUrl(amount: number, planName = 'Pase Libre', p
   return `/app/pagar?${params.toString()}`;
 }
 
-/** Checkout del flujo Únete al Club (registro → pagar). */
+/** Checkout del flujo Únete al Club (registro → pagar simulado). */
 export function buildSubscriptionCheckoutUrl(planId: string, amount: number) {
   const params = new URLSearchParams({
     planId,
@@ -53,7 +51,7 @@ export function buildChallengeCheckoutUrl(challengeId: string, amount: number) {
   return `/app/pagar?${params.toString()}`;
 }
 
-/** Checkout completo de la Tienda Crow (carrito → datos → pasarela). */
+/** Checkout completo de la Tienda Crow (carrito → datos → pasarela simulada). */
 export function buildShopCheckoutUrl(_amount?: number, _itemCount?: number, _memberDiscount?: boolean) {
   return `/tienda/checkout`;
 }

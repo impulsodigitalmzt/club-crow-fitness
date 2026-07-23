@@ -4,16 +4,14 @@ import { useState } from 'react';
 import { Check, Clock3, Instagram, MapPin, MessageCircle, Navigation, Phone, Send, X } from 'lucide-react';
 import { PageHero } from '@/components/page-hero';
 
-type Panel = 'chat' | 'phone' | 'instagram' | null;
+type Panel = 'chat' | 'phone' | 'instagram' | 'directions' | null;
 
 const branches = [
   {
     id: '01',
     name: 'El Toreo',
     address: 'Silverio Pérez, Ponciano Díaz 132, El Toreo, 82120 Mazatlán, Sin.',
-    mapEmbed:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.8807289422825!2d-106.4389001!3d23.2474269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869f53006009ac9d%3A0xcdbe24509e2288ca!2sCrow%20Fitness%20Club!5e0!3m2!1ses-419!2smx!4v1784277478352!5m2!1ses-419!2smx',
-    directions: 'https://www.google.com/maps/dir/?api=1&destination=23.2474269,-106.4389001',
+    mapHint: 'Zona El Toreo · Mazatlán',
     photos: [
       { src: '/fotos/gym1.JPG', alt: 'Fachada Crow El Toreo' },
       { src: '/fotos/gym.JPG', alt: 'Crow El Toreo de noche' },
@@ -23,9 +21,7 @@ const branches = [
     id: '02',
     name: 'Real del Valle',
     address: 'Av. Paseo del Atlántico 4214, Real del Valle, 82124 Mazatlán, Sin.',
-    mapEmbed:
-      'https://maps.google.com/maps?q=Av.+Paseo+del+Atl%C3%A1ntico+4214,+Real+del+Valle,+82124+Mazatl%C3%A1n,+Sin.&z=16&output=embed',
-    directions: 'https://maps.app.goo.gl/7WZFVo7XnTJMJnFY9',
+    mapHint: 'Real del Valle · Mazatlán',
     photos: [
       { src: '/fotos/gym3.JPG', alt: 'Fachada Crow Real del Valle' },
       { src: '/fotos/area-peso-libre.jpg', alt: 'Área de entrenamiento Crow Real del Valle' },
@@ -35,6 +31,7 @@ const branches = [
 
 export default function ContactPage() {
   const [panel, setPanel] = useState<Panel>(null);
+  const [directionsBranch, setDirectionsBranch] = useState<(typeof branches)[number] | null>(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
@@ -83,7 +80,7 @@ export default function ContactPage() {
               <div className="flex min-h-[520px] flex-col items-center justify-center text-center">
                 <span className="flex size-16 items-center justify-center rounded-full bg-brand/15 text-brand"><Check className="size-8" /></span>
                 <h2 className="mt-6 font-display text-3xl font-black uppercase text-white">Solicitud recibida</h2>
-                <p className="mt-3 max-w-sm text-base leading-relaxed text-zinc-400">Gracias por contactarnos. Uno de nuestros asesores revisará tus datos y continuará contigo.</p>
+                <p className="mt-3 max-w-sm text-base leading-relaxed text-zinc-400">Demo: no se envió nada. En la propuesta real, un asesor recibiría estos datos.</p>
                 <button type="button" onClick={() => setSubmitted(false)} className="mt-7 rounded-full border border-white/15 px-6 py-3 text-xs font-bold text-white hover:border-brand">Enviar otra consulta</button>
               </div>
             ) : (
@@ -137,15 +134,21 @@ export default function ContactPage() {
                 key={branch.id}
                 className="flex flex-col overflow-hidden rounded-[2rem] border-[3px] border-zinc-500 bg-zinc-900"
               >
-                <div className="overflow-hidden">
-                  <iframe
-                    src={branch.mapEmbed}
-                    title={`Crow Fitness Club · Sucursal ${branch.name}`}
-                    className="h-56 w-full border-0"
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin"
+                <div className="relative flex h-56 items-end overflow-hidden bg-zinc-950 p-5">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={branch.photos[0].src}
+                    alt=""
+                    className="absolute inset-0 size-full object-cover opacity-50"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="relative">
+                    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
+                      Mapa demo
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-white">{branch.mapHint}</p>
+                    <p className="mt-1 text-xs text-zinc-400">Sin Google Maps · solo propuesta</p>
+                  </div>
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-7">
                   <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
@@ -173,14 +176,16 @@ export default function ContactPage() {
                       </figure>
                     ))}
                   </div>
-                  <a
-                    href={branch.directions}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDirectionsBranch(branch);
+                      setPanel('directions');
+                    }}
                     className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-4 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
                   >
                     <Navigation className="size-4" /> Cómo llegar · {branch.name}
-                  </a>
+                  </button>
                 </div>
               </article>
             ))}
@@ -196,13 +201,13 @@ export default function ContactPage() {
                 <div className="flex items-center justify-between bg-[#075e54] px-5 py-4">
                   <div>
                     <p className="font-bold text-white">Crow Fitness Club</p>
-                    <p className="text-[11px] text-white/70">en línea</p>
+                    <p className="text-[11px] text-white/70">demo · chat simulado</p>
                   </div>
                   <button onClick={() => setPanel(null)} aria-label="Cerrar"><X className="size-5 text-white" /></button>
                 </div>
                 <div className="h-80 space-y-3 overflow-y-auto bg-[#0b141a] p-5">
                   <div className="max-w-[85%] rounded-xl rounded-tl-none bg-[#202c33] p-3 text-sm text-zinc-200">
-                    ¡Hola! 👋 Bienvenido a Crow Fitness Club. ¿En qué podemos ayudarte?
+                    ¡Hola! 👋 Bienvenido a Crow Fitness Club. Este chat es solo una simulación de la propuesta.
                     <p className="mt-1 text-right text-[9px] text-zinc-500">18:42</p>
                   </div>
                   {messages.map((item, index) => (
@@ -223,8 +228,41 @@ export default function ContactPage() {
                 <button onClick={() => setPanel(null)} className="absolute right-6 top-6" aria-label="Cerrar"><X className="size-5 text-white" /></button>
                 <span className="flex size-24 items-center justify-center rounded-full bg-brand text-3xl font-black text-white">CF</span>
                 <h2 className="mt-7 font-display text-2xl font-black text-white">Crow Fitness Club</h2>
-                <p className="mt-2 text-sm text-zinc-400">Llamando al 669 158 7875...</p>
+                <p className="mt-2 text-sm text-zinc-400">Demo: llamada simulada al 669 158 7875...</p>
                 <button onClick={() => setPanel(null)} className="mt-24 flex size-16 items-center justify-center rounded-full bg-red-500 text-white"><Phone className="size-6 rotate-[135deg]" /></button>
+              </div>
+            )}
+
+            {panel === 'directions' && directionsBranch && (
+              <div className="p-7">
+                <div className="flex items-center justify-between">
+                  <p className="font-display text-xl font-black text-white">Cómo llegar</p>
+                  <button onClick={() => setPanel(null)} aria-label="Cerrar"><X className="size-5 text-white" /></button>
+                </div>
+                <p className="mt-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-brand">
+                  Ruta simulada · demo
+                </p>
+                <h3 className="mt-4 font-display text-2xl font-black uppercase text-white">
+                  {directionsBranch.name}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                  {directionsBranch.address}
+                </p>
+                <ol className="mt-6 space-y-3 text-sm text-zinc-300">
+                  <li className="rounded-xl border border-white/10 bg-black/40 px-4 py-3">1. Sal de tu ubicación actual</li>
+                  <li className="rounded-xl border border-white/10 bg-black/40 px-4 py-3">2. Dirígete a {directionsBranch.mapHint}</li>
+                  <li className="rounded-xl border border-white/10 bg-black/40 px-4 py-3">3. Llega a Crow Fitness Club · {directionsBranch.name}</li>
+                </ol>
+                <p className="mt-5 text-xs text-zinc-500">
+                  En la versión real, aquí se abriría el navegador GPS. En esta propuesta no hay conexión a Google Maps.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setPanel(null)}
+                  className="mt-6 w-full rounded-xl bg-brand py-3 text-xs font-black uppercase tracking-wider text-white hover:bg-brand-dark"
+                >
+                  Entendido
+                </button>
               </div>
             )}
 
@@ -248,7 +286,8 @@ export default function ContactPage() {
                   <p><strong className="block text-lg text-white">8.4K</strong>seguidores</p>
                   <p><strong className="block text-lg text-white">312</strong>seguidos</p>
                 </div>
-                <button className="mt-6 w-full rounded-lg bg-[#0095f6] py-3 text-sm font-bold text-white">Seguir</button>
+                <button className="mt-6 w-full rounded-lg bg-[#0095f6] py-3 text-sm font-bold text-white">Seguir (demo)</button>
+                <p className="mt-3 text-center text-[11px] text-zinc-500">Simulación · no abre Instagram real</p>
               </div>
             )}
           </div>

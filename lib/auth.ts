@@ -1,6 +1,6 @@
 export const ADMIN_SESSION_COOKIE = 'crow_admin_session';
 
-/** Token de sesión simple (preparado para reemplazar por Supabase Auth). */
+/** Cookie de sesión demo (sin Supabase ni auth real). */
 export function getAdminSessionToken() {
   return process.env.ADMIN_SESSION_SECRET || 'crow-admin-dev-session';
 }

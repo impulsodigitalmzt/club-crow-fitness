@@ -1,14 +1,19 @@
+import Link from 'next/link';
 import { Facebook, Instagram } from 'lucide-react';
 
+/**
+ * Enlaces de redes en modo demo: llevan a /contacto (paneles simulados).
+ * No abren Facebook/Instagram reales.
+ */
 export const socialLinks = [
   {
-    href: 'https://www.facebook.com/crowfitnessclub/?locale=es_LA',
-    label: 'Facebook de Crow Fitness Club',
+    href: '/contacto',
+    label: 'Facebook de Crow Fitness Club (demo)',
     icon: Facebook,
   },
   {
-    href: 'https://www.instagram.com/reel/DNDszG-xmOg/',
-    label: 'Instagram de Crow Fitness Club',
+    href: '/contacto',
+    label: 'Instagram de Crow Fitness Club (demo)',
     icon: Instagram,
   },
 ] as const;
@@ -22,17 +27,16 @@ export function SocialLinks({
 }) {
   return (
     <div className={`flex items-center gap-2 ${className}`}>
-      {socialLinks.map(({ href, label, icon: Icon }) => (
-        <a
-          key={href}
+      {socialLinks.map(({ href, label, icon: Icon }, index) => (
+        <Link
+          key={`${href}-${index}`}
           href={href}
-          target="_blank"
-          rel="noopener noreferrer"
           aria-label={label}
+          title="Demo: redes simuladas en Contacto"
           className="inline-flex size-9 items-center justify-center rounded-full border border-white/15 text-zinc-300 transition-colors hover:border-brand/60 hover:bg-brand/15 hover:text-brand-light"
         >
           <Icon className={iconClassName} />
-        </a>
+        </Link>
       ))}
     </div>
   );

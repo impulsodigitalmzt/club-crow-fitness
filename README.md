@@ -1,20 +1,18 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Crow Fitness Club — Demo / propuesta
 
-# Run and deploy your AI Studio app
+Sitio de demostración para presentar la experiencia Crow. **Todo es simulado**: no hay base de datos, WhatsApp, correos, pagos ni APIs externas reales.
 
-This contains everything you need to run your app locally.
+## Correr en local
 
-View your app in AI Studio: https://ai.studio/apps/e68891d9-c12d-4695-a729-ac1a2423e940
+1. `npm install`
+2. (Opcional) Copia `.env.example` a `.env.local` con los usuarios demo
+3. `npm run dev`
 
-## Run Locally
+### Credenciales demo
 
-**Prerequisites:**  Node.js
+| Área | Usuario | Contraseña |
+|------|---------|------------|
+| Admin | `admin@crowfitness.mx` | `crowadmin` |
+| Portal socio | `socio@crowfitness.mx` | `crowsocio` |
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Datos de admin/portal viven en `localStorage` del navegador.

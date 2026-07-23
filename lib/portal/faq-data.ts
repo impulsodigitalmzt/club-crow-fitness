@@ -61,5 +61,5 @@ export const portalHelpContent: HelpContent = {
         'Desde el sitio web en “Acceso a socios”, o directo en /app/login. Demo: socio@crowfitness.mx / crowsocio.',
     },
   ],
-  footerNote: '¿Dudas del gym? Escríbenos por WhatsApp desde el sitio o pásate por recepción.',
+  footerNote: 'Demo: el chat de WhatsApp en Contacto es simulado. No hay envíos reales.',
 };

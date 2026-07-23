@@ -1,5 +1,5 @@
 /* Crow Fitness Club — Service Worker PWA */
-const CACHE_NAME = 'crow-fitness-v1';
+const CACHE_NAME = 'crow-fitness-v2';
 const PRECACHE = [
   '/',
   '/logo.png',
@@ -29,6 +29,12 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
+  // Nunca cachear bundles de Next: cambian en cada build y un hit viejo
+  // puede resolver imports a `undefined` (error Lazy element type).
+  if (url.pathname.startsWith('/_next/')) {
+    return;
+  }
+
   // Navegación: red primero, fallback a caché / offline home
   if (request.mode === 'navigate') {
     event.respondWith(
@@ -43,7 +49,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Estáticos: caché primero, luego red
+  // Estáticos de app (icons, logo, etc.): caché primero, luego red
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;

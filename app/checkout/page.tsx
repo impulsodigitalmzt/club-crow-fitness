@@ -211,8 +211,8 @@ export default function CheckoutPage() {
             </p>
             <p className="mt-2 text-sm leading-relaxed text-zinc-400">
               {notificationStatus === 'sent'
-                ? 'Tu tarjeta digital ya fue enviada por WhatsApp y correo electrónico.'
-                : 'Estamos enviando tu tarjeta digital por WhatsApp y correo electrónico...'}
+                ? 'Demo: envío simulado de tarjeta digital por WhatsApp y correo (no se envió nada real).'
+                : 'Demo: simulando envío de tarjeta digital por WhatsApp y correo...'}
             </p>
             <div className="mt-4 space-y-3">
               <NotificationRow
@@ -233,7 +233,7 @@ export default function CheckoutPage() {
             {notificationStatus === 'sent' ? (
               <p className="mt-4 flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2.5 text-xs font-semibold text-emerald-300">
                 <Check className="size-4 shrink-0" />
-                Tarjeta digital enviada correctamente
+                Tarjeta digital enviada (simulación demo)
               </p>
             ) : null}
           </div>
@@ -471,7 +471,7 @@ export default function CheckoutPage() {
                 <Check className="size-4 text-brand" /> Pase digital con tu nombre y vigencia
               </p>
               <p className="flex gap-2">
-                <Check className="size-4 text-brand" /> Confirmación por WhatsApp y correo
+                <Check className="size-4 text-brand" /> Confirmación simulada (WhatsApp / correo)
               </p>
               <p className="flex gap-2">
                 <Check className="size-4 text-brand" /> Activación inmediata al pagar

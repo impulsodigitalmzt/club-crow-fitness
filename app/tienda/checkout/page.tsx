@@ -221,8 +221,9 @@ export default function TiendaCheckoutPage() {
 
           <div className="mt-6 space-y-3 rounded-2xl border-[3px] border-zinc-500 bg-black/40 p-4 text-left text-sm">
             <p className="text-zinc-400">
-              Enviamos el comprobante a{' '}
+              Demo: comprobante simulado para{' '}
               <span className="font-semibold text-white">{order.email}</span>
+              {' '}(no se envió correo ni WhatsApp real)
             </p>
             <div className="border-t border-white/10 pt-3">
               <p className="flex items-start gap-2 font-bold text-amber-200">
@@ -340,7 +341,7 @@ export default function TiendaCheckoutPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className={inputClass}
-                    placeholder="para enviarte el comprobante"
+                    placeholder="solo demo, no se envía nada"
                   />
                 </label>
                 <label className="block">

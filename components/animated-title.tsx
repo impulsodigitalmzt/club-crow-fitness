@@ -74,7 +74,17 @@ export function AnimatedTitle({
     );
   }
 
-  const MotionTag = motion[Tag] as typeof motion.h2;
+  // Mapa explícito: evita `motion[Tag]` dinámico (puede quedar undefined en HMR/SW).
+  const MotionTag =
+    Tag === 'h1'
+      ? motion.h1
+      : Tag === 'h3'
+        ? motion.h3
+        : Tag === 'p'
+          ? motion.p
+          : Tag === 'blockquote'
+            ? motion.blockquote
+            : motion.h2;
 
   return (
     <MotionTag

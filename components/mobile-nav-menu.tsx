@@ -181,10 +181,15 @@ export function MobileNavMenu({
               <MapPin className="mt-0.5 size-4 shrink-0 text-brand" />
               <span>El Toreo y Real del Valle, Mazatlán</span>
             </p>
-            <a href="tel:6691587875" className="flex items-start gap-3 hover:text-brand">
+            <Link
+              href="/contacto"
+              onClick={onClose}
+              className="flex items-start gap-3 hover:text-brand"
+              title="Demo: contacto simulado"
+            >
               <Phone className="mt-0.5 size-4 shrink-0 text-brand" />
               <span>669 158 7875</span>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -194,17 +199,17 @@ export function MobileNavMenu({
             Síguenos
           </p>
           <div className="flex items-center gap-2">
-            {socialLinks.map(({ href, label, icon: Icon }) => (
-              <a
-                key={href}
+            {socialLinks.map(({ href, label, icon: Icon }, index) => (
+              <Link
+                key={`${href}-${index}`}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={onClose}
                 aria-label={label}
+                title="Demo: redes simuladas"
                 className="inline-flex size-10 items-center justify-center rounded-full border border-zinc-300 bg-white text-zinc-700 transition-colors hover:border-brand hover:text-brand"
               >
                 <Icon className="size-4" />
-              </a>
+              </Link>
             ))}
           </div>
         </div>

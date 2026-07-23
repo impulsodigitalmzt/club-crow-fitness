@@ -1,6 +1,6 @@
 /**
- * Reservado para una futura integración real.
- * El panel admin opera 100% en almacenamiento local del navegador.
+ * Stub de demo. No hay Supabase ni base de datos externa.
+ * Admin y portal usan localStorage / memoria del navegador.
  */
 
 export function createSupabaseClient() {
